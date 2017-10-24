@@ -1,0 +1,13 @@
+
+
+.login-button, .logout-button, .delete-button, .create-button, .edit-button {
+    font-weight: bold;
+    background-color: white;
+    color: #809C95;
+    border-radius: 20%;
+
+}
+
+strong{
+    color: red;
+}
