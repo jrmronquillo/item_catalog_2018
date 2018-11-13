@@ -27,9 +27,9 @@ CLIENT_ID = json.loads(
 APPLICATION_NAME = "Catalog Application"
 
 
-# engine = create_engine('sqlite:///catalogwithusers.db')
-engine = create_engine(
-    'postgresql+psycopg2://catalog:catalog@localhost/catalog')
+engine = create_engine('sqlite:///catalogwithusers.db')
+# engine = create_engine(
+#   'postgresql+psycopg2://catalog:catalog@localhost/catalog')
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
@@ -368,4 +368,4 @@ def page_not_found(e):
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key1'
     app.debug = True
-    app.run(host='13.58.78.181', port=80)
+    app.run(host='0.0.0.0', port=5000)
