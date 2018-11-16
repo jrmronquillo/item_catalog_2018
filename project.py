@@ -220,6 +220,7 @@ def showItemsJSON(category_id):
 @app.route('/categories/')
 def showCategories():
     categories = session.query(Categories).all()
+    print categories
     if 'username' not in login_session:
         tme = datetime.datetime.utcnow()
         return render_template('publiccategories.html',
