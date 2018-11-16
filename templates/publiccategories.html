@@ -27,13 +27,10 @@
 
 <h2 class='text-muted'>Categories</h2>
 
-<a href="{{url_for('newCategory')}}" > <h4> Create a New Category</h4> </a>
 <hr>
 {% if categories != [] %}
     {% for category in categories %}
         <a href="{{url_for('showItems', category_id=category.id)}}"><h4>{{category.name}}</h4></a>
-        <a href = "{{url_for('editCategory',category_id = category.id)}}">Edit</a>
-        <a href = "{{url_for('deleteCategory',category_id = category.id)}}">Delete</a>
 
     {% endfor %}
 {% else %}
