@@ -9,6 +9,9 @@
             <div class='row'>
                 <h4>Name:</h4>
                 <input type ='text' size='20' name='name' required>
+                <textarea name='content' rows='8' cols='50' required>
+                    Start typing...
+                </textarea>
                 <input type='submit' value='Create' class='create-button'>
                 <a href = "{{url_for('showCategories')}}">Cancel</a>
             </div>

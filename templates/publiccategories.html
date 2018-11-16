@@ -31,6 +31,7 @@
 {% if categories != [] %}
     {% for category in categories %}
         <a href="{{url_for('showItems', category_id=category.id)}}"><h4>{{category.name}}</h4></a>
+        <p>{{category.content}}</p>
 
     {% endfor %}
 {% else %}

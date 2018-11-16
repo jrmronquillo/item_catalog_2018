@@ -235,7 +235,7 @@ def showCategories():
 @login_required
 def newCategory():
     if request.method == 'POST':
-        newCategory = Categories(name=request.form['name'],
+        newCategory = Categories(name=request.form['name'], content=request.form['content'],
                                  user_id=login_session['user_id'])
         session.add(newCategory)
         session.commit()
