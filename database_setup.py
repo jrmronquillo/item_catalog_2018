@@ -58,7 +58,7 @@ class CategoryItem(Base):
             'description': self.description,
         }
 
-engine = create_engine('sqlite:///catalogwithusers.db')
+engine = create_engine('sqlite:///catalogwithusers.db', connect_args={'check_same_thread':False})
 # engine = create_engine(
 #   'postgresql+psycopg2://catalog:catalog@localhost/catalog')
 Base.metadata.create_all(engine)
