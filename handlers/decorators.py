@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Categories, CategoryItem
 
-engine = create_engine('sqlite:///catalogwithusers.db', connect_args={'check_same_thread':False})
+engine = create_engine('sqlite:///catalogwithusers.db', connect_args={'check_same_thread':False}, echo=True)
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
@@ -19,7 +19,12 @@ def login_required(func):
     """
     @wraps(func)
     def login(*args, **kwargs):
+        print 'login_session in login decorator:'
+        print login_session
+        #print login_session['email']
         if 'username' not in login_session:
+            return redirect('/login')
+        elif login_session['email'] != 'jrm.ronquillo@gmail.com':
             return redirect('/login')
         else:
             return func(*args, **kwargs)
