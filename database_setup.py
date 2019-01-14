@@ -1,6 +1,7 @@
 import os
 import sys
-from sqlalchemy import Column, ForeignKey, Integer, String
+import datetime
+from sqlalchemy import Column, ForeignKey, Integer, String, DateTime, Date
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
@@ -17,10 +18,14 @@ class User(Base):
     picture = Column(String(250))
 
 
+def _get_date():
+    return datetime.date.today()
+
 class Categories(Base):
     __tablename__ = 'categories'
 
     id = Column(Integer, primary_key=True)
+    created = Column(Date, default=_get_date)
     name = Column(String(250), nullable=False)
     content = Column(String(250), nullable=False)
     categoryItems = relationship("CategoryItem",

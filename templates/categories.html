@@ -23,6 +23,7 @@
 <hr>
 {% if categories != [] %}
     {% for category in categories %}
+        <h5>Date: {{category.created}} <h5>
         <a href="{{url_for('showItems', category_id=category.id)}}"><h4>{{category.name}}</h4></a>
         <a href = "{{url_for('editCategory',category_id = category.id)}}">Edit</a>
         <a href = "{{url_for('deleteCategory',category_id = category.id)}}">Delete</a>
