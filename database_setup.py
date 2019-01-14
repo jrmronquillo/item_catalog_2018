@@ -26,6 +26,7 @@ class Categories(Base):
 
     id = Column(Integer, primary_key=True)
     created = Column(Date, default=_get_date)
+    author = Column(String(250), nullable=False)
     name = Column(String(250), nullable=False)
     content = Column(String(250), nullable=False)
     categoryItems = relationship("CategoryItem",
@@ -39,6 +40,7 @@ class Categories(Base):
         return {
             'content': self.content,
             'name': self.name,
+            'created': self.created,
             'id': self.id,
             }
 

@@ -236,7 +236,7 @@ def showCategories():
 def newCategory():
     if request.method == 'POST':
         newCategory = Categories(name=request.form['name'], content=request.form['content'],
-                                 user_id=login_session['user_id'])
+                                 author=login_session['username'], user_id=login_session['user_id'])
         session.add(newCategory)
         session.commit()
         return redirect(url_for('showCategories'))
