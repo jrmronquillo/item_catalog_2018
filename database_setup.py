@@ -27,8 +27,8 @@ class Categories(Base):
     id = Column(Integer, primary_key=True)
     created = Column(Date, default=_get_date)
     author = Column(String(250), nullable=False)
-    name = Column(String(250), nullable=False)
-    content = Column(String(250), nullable=False)
+    name = Column(String(300), nullable=False)
+    content = Column(String(3000), nullable=False)
     categoryItems = relationship("CategoryItem",
                                  cascade='save-update, merge, delete')
     user_id = Column(Integer, ForeignKey('user.id'))
@@ -50,7 +50,7 @@ class CategoryItem(Base):
 
     name = Column(String(80), nullable=False)
     id = Column(Integer, primary_key=True)
-    description = Column(String(250))
+    description = Column(String(2000))
     category_id = Column(Integer, ForeignKey('categories.id'))
     # categories = relationship(Categories)
     user_id = Column(Integer, ForeignKey('user.id'))
