@@ -235,8 +235,17 @@ def showCategories():
 @login_required
 def newCategory():
     if request.method == 'POST':
+        # logic to check number of characters in input data
+        name = request.form['name']
+        content = request.form['content']
+        if (len(content) > 3000) or (len(name) > 300):
+            print 'content input is over the character limit'
+            return render_template('newCategory.html')
+        # ---------------
+
+
         newCategory = Categories(name=request.form['name'], content=request.form['content'],
-                                 author=login_session['username'], user_id=login_session['user_id'])
+                                  author=login_session['username'], user_id=login_session['user_id'])
         session.add(newCategory)
         session.commit()
         return redirect(url_for('showCategories'))
