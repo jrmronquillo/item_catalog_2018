@@ -198,7 +198,8 @@ def gdisconnect():
 # API endpoint for All Categories
 @app.route('/categories/JSON')
 def showCategoriesJSON():
-    categories = session.query(Categories).all()
+    # categories = session.query(Categories).all()
+    categories = session.query(Categories).order_by(Categories.id.desc())
 
     return jsonify(categorylist=[i.serialize for i in categories])
 
@@ -219,7 +220,8 @@ def showItemsJSON(category_id):
 @app.route('/')
 @app.route('/categories/')
 def showCategories():
-    categories = session.query(Categories).all()
+   # categories = session.query(Categories).all()
+    categories = session.query(Categories).order_by(Categories.id.desc())
     print categories
     if 'username' not in login_session:
         tme = datetime.datetime.utcnow()
