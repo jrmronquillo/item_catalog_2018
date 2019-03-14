@@ -3,41 +3,40 @@
 {% block content %}
 <body>
 <div class = 'pane'>
-{{error}}
- <div class='creator'>
-</div>
-<div class = 'flash'>
-              {% with messages = get_flashed_messages() %}
-      {% if messages %}
+    {{error}}
+    <div class='creator'></div>
+    <div class = 'flash'>
+                  {% with messages = get_flashed_messages() %}
+          {% if messages %}
 
-        <ul>
-        {% for message in messages %}
-            <li> <strong> {{ message }} </strong> </li>
-        {% endfor %}
-        </ul>
+            <ul>
+            {% for message in messages %}
+                <li> <strong> {{ message }} </strong> </li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+
+    </div>
+
+    <span class='primary-text title-text'>Categories</span>
+
+    <hr>
+    {% if categories != [] %}
+        {% for category in categories %}
+            <span class="primary-text-color">{{category.created}} </span>
+            <a href="{{url_for('showItems', category_id=category.id)}}"><h3 class="secondary-text-color">{{category.name}}</h3></a>
+            <hr>
+            <h5 class="primary-text-color">Written by: {{category.author}}</h5>
+            <hr>
+            <p class="primary-text-color font-custom">{{category.content}}</p>
+            <hr>
+
+            {% endfor %}
+        {% else %}
+            <p> There is current no data. <p>
         {% endif %}
-    {% endwith %}
 
-</div>
-
-<h2 class='text-muted'>Categories</h2>
-
-<hr>
-{% if categories != [] %}
-    {% for category in categories %}
-        <h4>{{category.created}} <h4>
-        <a href="{{url_for('showItems', category_id=category.id)}}"><h3>{{category.name}}</h3></a>
-        <hr>
-        <h5>Written by: {{category.author}}</h5>
-        <hr>
-        <p>{{category.content}}</p>
-        <hr>
-
-    {% endfor %}
-{% else %}
-   <p> There are currently no categories. <p>
-{% endif %}
-
-</div>
+    </div>
 </body>
 {% endblock %}

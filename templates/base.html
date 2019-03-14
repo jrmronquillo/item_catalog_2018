@@ -5,6 +5,11 @@
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700i" rel="stylesheet">
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -14,28 +19,27 @@
 </head>
 <body>
     <div class='container'>
-        <div class='row no-gutters'>
+        <div class='row no-gutters nav-bar'>
+            <div class='col-sm-2'>
+                <h3><a class="primary-text-color" href="http://jeromeronquillo.com">Home</a></h3>
+            </div>
+            <div class='col-sm-2'>
+                <h3><a class="primary-text-color" href="http://localhost:5000">Blog</a></h3>
+            </div>
             <div class='col-sm-4'>
             </div>
             <div class='col-sm-3'>
             </div>
             <div class='col-sm-1'>
             </div>
-            <div class='col-sm-2'>
-                <h3><a href="http://localhost:5000">Blog</a></h3>
-            </div>
-            <div class='col-sm-2'>
-                <h3><a href="http://jeromeronquillo.com">Home</a></h3>
-            </div>
             <!-- <div class='col-sm-3'>
                 <h3>{{ tme }}</h3>
             </div> -->
         </div>
-        <hr>
-        <div class='row'>
-            <div id="content" align='center'>{% block content %}{% endblock %}</div>
+
+        <div class='row no-gutters'>
+            <div id="content" align='left'>{% block content %}{% endblock %}</div>
         </div>
-        <hr>
         <div id="footer" class="text-muted">
             {% block footer %}
             &copy; Jerome Ronquillo

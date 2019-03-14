@@ -1,4 +1,25 @@
 
+/*
+#000000 black
+#FFFFFF white
+
+#E87F4D Orange
+#3A5E48 Dark Green
+#2F4A57 Dark Blue
+#4F788D Blue
+#7BA6B4 Light Blue
+#A5BFC5 Gray
+
+Background: #455B71;
+Secondary Background: #28343D;
+Highlights: ;
+Primary Text: #DE9391
+Secondary Text: ;
+*/
+
+.font-custom{
+  font-family: 'Ubuntu', sans-serif;
+}
 
 .login-button, .logout-button, .delete-button, .create-button, .edit-button {
     font-weight: bold;
@@ -8,6 +29,52 @@
 
 }
 
-strong{
+.nav-bar {
+	background-color: #3A5E48;
+	height: 5%;
+}
+
+.pane {
+	background-color:  #4F788D ;
+	padding: 0px 100px 0px 100px;
+}
+
+.primary-text-color{
+	color: #FFF;
+}
+
+.secondary-text-color{
+	color: #E87F4D;
+}
+
+
+
+.title-text{
+	font-size: 3em;
+}
+
+a {
+  display: block;
+  padding:8px;
+  background-color: #3A5E48;
+  color: #FFF;
+}
+
+a:hover {
+  display: block;
+  padding:8px;
+  background-color: #3A5E48;
+}
+
+h3 {
+	color: #FFF;
+}
+
+h4{
+	color: #FFF;
+}
+
+strong {
     color: red;
 }
+

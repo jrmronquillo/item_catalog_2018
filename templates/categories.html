@@ -1,36 +1,39 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class = 'pane'>
-<div class = 'flash'>
-              {% with messages = get_flashed_messages() %}
-      {% if messages %}
+    <div class = 'flash'>
+                {% with messages = get_flashed_messages() %}
+        {% if messages %}
 
-        <ul>
-        {% for message in messages %}
-            <li> <strong> {{ message }} </strong> </li>
+            <ul>
+            {% for message in messages %}
+                <li> <strong> {{ message }} </strong> </li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+
+    </div>
+    <div class = 'logout'>
+        <button class='logout-button' onClick="javascript: window.location='/gdisconnect'">Log out</button>
+    </div>
+    <h2>Posts</h2>
+
+    <a href="{{url_for('newCategory')}}" class='a.customLink' > 
+        <h4 class="primary-text"> Create a New Category</h4> 
+    </a>
+    <hr>
+    {% if categories != [] %}
+        {% for category in categories %}
+            <h5>Date: {{category.created}} <h5>
+            <a href="{{url_for('showItems', category_id=category.id)}}"><h4>{{category.name}}</h4></a>
+            <a href = "{{url_for('editCategory',category_id = category.id)}}">Edit</a>
+            <a href = "{{url_for('deleteCategory',category_id = category.id)}}">Delete</a>
         {% endfor %}
-        </ul>
-        {% endif %}
-    {% endwith %}
-
+    {% else %}
+    <p> There are currently no Posts. <p>
+    {% endif %}
 </div>
-<div class = 'logout'>
-    <button class='logout-button' onClick="javascript: window.location='/gdisconnect'">Log out</button>
-</div>
-<h2 class='text-muted'>Posts</h2>
 
-<a href="{{url_for('newCategory')}}" class='a.customLink' > <h4> Create a New Category</h4> </a>
-<hr>
-{% if categories != [] %}
-    {% for category in categories %}
-        <h5>Date: {{category.created}} <h5>
-        <a href="{{url_for('showItems', category_id=category.id)}}"><h4>{{category.name}}</h4></a>
-        <a href = "{{url_for('editCategory',category_id = category.id)}}">Edit</a>
-        <a href = "{{url_for('deleteCategory',category_id = category.id)}}">Delete</a>
 
-    {% endfor %}
-{% else %}
-   <p> There are currently no Posts. <p>
-{% endif %}
-</div>
 {% endblock %}
