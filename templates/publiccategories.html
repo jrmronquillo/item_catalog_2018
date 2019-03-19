@@ -24,19 +24,26 @@
     <hr>
     {% if categories != [] %}
         {% for category in categories %}
-            <span class="primary-text-color">{{category.created}} </span>
-            <a href="{{url_for('showItems', category_id=category.id)}}"><h3 class="secondary-text-color">{{category.name}}</h3></a>
-            <hr>
-            <h5 class="primary-text-color">Written by: {{category.author}}</h5>
-            <hr>
-            <p class="primary-text-color font-custom">{{category.content}}</p>
-            <hr>
-
+            <div class="post">
+                <span class="primary-text-color">{{category.created}} </span>
+                <a href="{{url_for('showItems', category_id=category.id)}}"><h3 class="secondary-text-color">{{category.name}}</h3></a>
+                <hr>
+                <h5 class="primary-text-color">Written by: {{category.author}}</h5>
+                <hr>
+                <p class="primary-text-color font-custom">{{category.content}}</p>
+                <hr>
+            </div>
             {% endfor %}
         {% else %}
             <p> There is current no data. <p>
         {% endif %}
 
+
     </div>
+    <div class="up-arrow">
+        &uArr;
+    </div>
+
+
 </body>
 {% endblock %}

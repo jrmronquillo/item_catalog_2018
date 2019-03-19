@@ -16,6 +16,16 @@ Highlights: ;
 Primary Text: #DE9391
 Secondary Text: ;
 */
+.up-arrow{
+	bottom: 5px;
+	position: absolute;
+  	left: 50%;
+  	bottom: 25px;
+  	color: #FFF;
+  	height: 10px;
+  	font-size: 100px;
+  	background-color: rgb(255, 255, 255, .5);
+  }
 
 .font-custom{
   font-family: 'Ubuntu', sans-serif;
@@ -30,21 +40,25 @@ Secondary Text: ;
 }
 
 .nav-bar {
-	background-color: #3A5E48;
+	background-color: rgb(58, 94, 72, .8);
 	height: 5%;
 }
 
 .pane {
-	background-color:  #4F788D ;
+	background-color:  #FFF ;
 	padding: 0px 100px 0px 100px;
 }
 
+.post{
+  margin: 100px;
+}
+
 .primary-text-color{
-	color: #FFF;
+	color: #000;
 }
 
 .secondary-text-color{
-	color: #E87F4D;
+	color: #000;
 }
 
 
