@@ -19,11 +19,11 @@
 
     </div>
 
-    <span class='primary-text title-text'>Categories</span>
-
+    <img class="header-image" src="{{ url_for('static', filename='images/header.png') }}" />
     <hr>
     {% if categories != [] %}
         {% for category in categories %}
+<<<<<<< HEAD
             <div class="post">
                 <span class="primary-text-color">{{category.created}} </span>
                 <a href="{{url_for('showItems', category_id=category.id)}}"><h3 class="secondary-text-color">{{category.name}}</h3></a>
@@ -33,6 +33,17 @@
                 <p class="primary-text-color font-custom">{{category.content}}</p>
                 <hr>
             </div>
+=======
+        <div class="post">
+            <span class="primary-text-color">{{category.created}} </span>
+            <a href="{{url_for('showItems', category_id=category.id)}}"><h3 class="secondary-text-color">{{category.name}}</h3></a>
+            <hr>
+            <h5 class="primary-text-color">Written by: {{category.author}}</h5>
+            <hr>
+            <p class="primary-text-color font-custom">{{category.content}}</p>
+            <hr>
+        </div>
+>>>>>>> stickyHeader
             {% endfor %}
         {% else %}
             <p> There is current no data. <p>
