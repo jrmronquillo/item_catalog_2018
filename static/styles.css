@@ -17,6 +17,10 @@ Primary Text: #DE9391
 Secondary Text: ;
 */
 
+.primary-bg-color{
+  background-color: #3A5E48 !important;
+}
+
 .font-custom{
   font-family: 'Ubuntu', sans-serif;
 }
@@ -60,8 +64,7 @@ Secondary Text: ;
 }
 
 .post{
-  margin-left: 275px;
-  margin-right: 275px;
+  margin: 10em, 1em;
 
 }
 
@@ -116,7 +119,17 @@ h4{
 	color: #FFF;
 }
 
+li{
+  text-decoration: none;
+}
+
 strong {
     color: red;
 }
 
+@media (max-width: 700px){
+    .post{
+      margin: 1em;
+    }
+
+  }
