@@ -19,11 +19,11 @@
 
     </div>
 
-    <span class='primary-text title-text'>Categories</span>
-
+    <img class="header-image" src="{{ url_for('static', filename='images/header.png') }}" />
     <hr>
     {% if categories != [] %}
         {% for category in categories %}
+        <div class="post">
             <span class="primary-text-color">{{category.created}} </span>
             <a href="{{url_for('showItems', category_id=category.id)}}"><h3 class="secondary-text-color">{{category.name}}</h3></a>
             <hr>
@@ -31,7 +31,7 @@
             <hr>
             <p class="primary-text-color font-custom">{{category.content}}</p>
             <hr>
-
+        </div>
             {% endfor %}
         {% else %}
             <p> There is current no data. <p>

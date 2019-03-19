@@ -21,6 +21,11 @@ Secondary Text: ;
   font-family: 'Ubuntu', sans-serif;
 }
 
+.header-image{
+  max-width: 100%;
+  height: auto;
+}
+
 .login-button, .logout-button, .delete-button, .create-button, .edit-button {
     font-weight: bold;
     background-color: white;
@@ -30,21 +35,36 @@ Secondary Text: ;
 }
 
 .nav-bar {
-	background-color: #3A5E48;
-	height: 5%;
+
+  top: 0;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  height: 12%;
+	background-color: rgb(58, 94, 72, 1);
+
+}
+
+.nav-bar-text{
+  color: #FFF;
 }
 
 .pane {
-	background-color:  #4F788D ;
-	padding: 0px 100px 0px 100px;
+	background-color:  #FFF ;
+	padding: 10px 0px 0px 0px;
+}
+
+.post{
+  margin-left: 275px;
+  margin-right: 275px;
 }
 
 .primary-text-color{
-	color: #FFF;
+	color: #000;
 }
 
 .secondary-text-color{
-	color: #E87F4D;
+	color: #000;
 }
 
 
