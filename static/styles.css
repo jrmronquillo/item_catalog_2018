@@ -16,16 +16,6 @@ Highlights: ;
 Primary Text: #DE9391
 Secondary Text: ;
 */
-.up-arrow{
-	bottom: 5px;
-	position: absolute;
-  	left: 50%;
-  	bottom: 25px;
-  	color: #FFF;
-  	height: 10px;
-  	font-size: 100px;
-  	background-color: rgb(255, 255, 255, .5);
-  }
 
 .font-custom{
   font-family: 'Ubuntu', sans-serif;
@@ -45,37 +35,34 @@ Secondary Text: ;
 }
 
 .nav-bar {
-<<<<<<< HEAD
-	background-color: rgb(58, 94, 72, .8);
-	height: 5%;
-=======
 
+	background-color: rgb(58, 94, 72, 1);
+	height: 5%;
   top: 0;
   text-align: center;
   position: fixed;
   width: 100%;
   height: 12%;
-	background-color: rgb(58, 94, 72, 1);
 
 }
 
 .nav-bar-text{
   color: #FFF;
->>>>>>> stickyHeader
+
 }
 
 .pane {
 	background-color:  #FFF ;
-<<<<<<< HEAD
+
 	padding: 0px 100px 0px 100px;
-=======
+
 	padding: 10px 0px 0px 0px;
 }
 
 .post{
   margin-left: 275px;
   margin-right: 275px;
->>>>>>> stickyHeader
+
 }
 
 .post{
@@ -95,6 +82,18 @@ Secondary Text: ;
 .title-text{
 	font-size: 3em;
 }
+
+.up-arrow{
+  display: none;
+  position: fixed;
+  left: 50%;
+  bottom: 60px;
+  color: rgb(58, 94, 72, .8);
+  height: 2px;
+  font-size: 50px;
+  background-color: rgb(255, 255, 255, .5);
+  }
+
 
 a {
   display: block;
