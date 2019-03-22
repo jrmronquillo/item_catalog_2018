@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     {% block head %}
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/styles.css') }}">
  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700i" rel="stylesheet">
@@ -43,7 +43,7 @@
               </div>
             </nav>
 
-        <div class='row no-gutters'>
+        <div class='row no-gutters content-main'>
             <div id="content" align='left'>{% block content %}{% endblock %}</div>
         </div>
         <div id="footer" class="text-muted">

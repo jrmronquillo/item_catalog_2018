@@ -223,7 +223,8 @@ def showItemsJSON(category_id):
 @app.route('/categories/')
 def showCategories():
    # categories = session.query(Categories).all()
-    categories = session.query(Categories).order_by(Categories.id.desc())
+    categories = session.query(Categories).order_by(Categories.id.desc()).all()
+    #categories = session.query(Categories).all()
     print categories
     if 'username' not in login_session:
         tme = datetime.datetime.utcnow()
@@ -281,7 +282,7 @@ def newCategory():
 
 # edit category
 @app.route('/categories/<int:category_id>/edit/', methods=['GET', 'POST'])
-@login_required
+# @login_required
 @category_exists
 @user_created_category
 def editCategory(category_id):
@@ -290,11 +291,27 @@ def editCategory(category_id):
     if request.method == 'POST':
         if request.form['name']:
             editedCategory.name = request.form['name']
+            editedCategory.content = request.form['content']
             return redirect(url_for('showCategories'))
     else:
         return render_template(
             'editCategory.html', category=editedCategory)
 
+# edit category ORIGINAl
+# @app.route('/categories/<int:category_id>/edit/', methods=['GET', 'POST'])
+# @login_required
+# @category_exists
+# @user_created_category
+# def editCategory(category_id):
+#    editedCategory = session.query(
+#        Categories).filter_by(id=category_id).first()
+#    if request.method == 'POST':
+##        if request.form['name']:
+#            editedCategory.name = request.form['name']
+#            return redirect(url_for('showCategories'))
+#    else:
+#        return render_template(
+#            'editCategory.html', category=editedCategory)
 
 # delete category
 @app.route('/categories/<int:category_id>/delete/', methods=['GET', 'POST'])
