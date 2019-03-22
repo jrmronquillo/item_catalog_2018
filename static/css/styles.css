@@ -15,6 +15,12 @@ Highlights: ;
 Primary Text: #DE9391
 Secondary Text: ;
 */
+.col-centered {
+  float: none;
+  margin: 0 auto;
+  text-align: center;
+}
+
 #content {
   width: 100%;
 }
@@ -41,6 +47,10 @@ Secondary Text: ;
 
 .long-content {
   white-space: pre-wrap;
+}
+
+.spacer-navbar {
+  margin-top: 10%;
 }
 
 .nav-bar {
@@ -108,11 +118,11 @@ a:hover {
 }
 
 h3 {
-  color: #FFF;
+  color: #000;
 }
 
 h4 {
-  color: #FFF;
+  color: #000;
 }
 
 li {
