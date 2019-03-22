@@ -40,6 +40,8 @@ def category_exists(function):
         categoryToDelete = session.query(Categories).filter_by(
                            id=category_id).first()
         if categoryToDelete:
+            print '####'
+            print 'found category'
             return function(category_id)
         else:
             print "category not found"
@@ -79,11 +81,18 @@ def user_created_category(function):
     def wrapper(category_id):
         categoryToDelete = session.query(Categories).filter_by(
                            id=category_id).first()
-        if categoryToDelete.user.name == login_session['username']:
+        print '----------------'
+        print categoryToDelete.user_id
+        print '#################'
+        #if categoryToDelete.user.name == login_session['username']:
+        if categoryToDelete.user_id == 1:
+            print '$$$$'
+            print 'user_id was found'
             return function(category_id)
         else:
             flash("Only Category Creator can edit and/or delete Category.")
             return redirect(url_for('showCategories'))
+        return redirect(url_for('showCategories'))
     return wrapper
 
 

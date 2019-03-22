@@ -8,6 +8,8 @@ from flask import session as login_session
 import random
 import string
 
+import jinja2
+
 from oauth2client.client import flow_from_clientsecrets
 from oauth2client.client import FlowExchangeError
 import httplib2
@@ -221,7 +223,8 @@ def showItemsJSON(category_id):
 @app.route('/categories/')
 def showCategories():
    # categories = session.query(Categories).all()
-    categories = session.query(Categories).order_by(Categories.id.desc())
+    categories = session.query(Categories).order_by(Categories.id.desc()).all()
+    #categories = session.query(Categories).all()
     print categories
     if 'username' not in login_session:
         tme = datetime.datetime.utcnow()
@@ -234,7 +237,7 @@ def showCategories():
 
 # create new category
 @app.route('/categories/new/', methods=['GET', 'POST'])
-@login_required
+#@login_required
 def newCategory():
     if request.method == 'POST':
         # logic to check number of characters in input data
@@ -247,17 +250,39 @@ def newCategory():
 
 
         newCategory = Categories(name=request.form['name'], content=request.form['content'],
-                                  author=login_session['username'], user_id=login_session['user_id'])
+                                  author='Jerome', user_id='1')
         session.add(newCategory)
         session.commit()
         return redirect(url_for('showCategories'))
     else:
         return render_template('newCategory.html')
 
+# original
+# @app.route('/categories/new/', methods=['GET', 'POST'])
+# @login_required
+#def newCategory():
+#    if request.method == 'POST':
+#        # logic to check number of characters in input data
+#        name = request.form['name']
+#        content = request.form['content']
+#        if (len(content) > 3000) or (len(name) > 300):
+#            print 'content input is over the character limit'
+#            return render_template('newCategory.html')
+        # ---------------
+
+
+ #       newCategory = Categories(name=request.form['name'], content=request.form['content'],
+#                                  author=login_session['username'], user_id=login_session['user_id'])
+#        session.add(newCategory)
+#        session.commit()
+#        return redirect(url_for('showCategories'))
+#    else:
+#        return render_template('newCategory.html')
+
 
 # edit category
 @app.route('/categories/<int:category_id>/edit/', methods=['GET', 'POST'])
-@login_required
+# @login_required
 @category_exists
 @user_created_category
 def editCategory(category_id):
@@ -266,15 +291,31 @@ def editCategory(category_id):
     if request.method == 'POST':
         if request.form['name']:
             editedCategory.name = request.form['name']
+            editedCategory.content = request.form['content']
             return redirect(url_for('showCategories'))
     else:
         return render_template(
             'editCategory.html', category=editedCategory)
 
+# edit category ORIGINAl
+# @app.route('/categories/<int:category_id>/edit/', methods=['GET', 'POST'])
+# @login_required
+# @category_exists
+# @user_created_category
+# def editCategory(category_id):
+#    editedCategory = session.query(
+#        Categories).filter_by(id=category_id).first()
+#    if request.method == 'POST':
+##        if request.form['name']:
+#            editedCategory.name = request.form['name']
+#            return redirect(url_for('showCategories'))
+#    else:
+#        return render_template(
+#            'editCategory.html', category=editedCategory)
 
 # delete category
 @app.route('/categories/<int:category_id>/delete/', methods=['GET', 'POST'])
-@login_required
+# @login_required
 @category_exists
 @user_created_category
 def deleteCategory(category_id):
@@ -287,6 +328,22 @@ def deleteCategory(category_id):
     else:
         return render_template(
                 'deleteCategory.html', category=categoryToDelete)
+
+# delete category - original
+#@app.route('/categories/<int:category_id>/delete/', methods=['GET', 'POST'])
+#@login_required
+#@category_exists
+#@user_created_category
+#def deleteCategory(category_id):
+#    categoryToDelete = session.query(
+#        Categories).filter_by(id=category_id).first()
+#    if request.method == 'POST':
+#        session.delete(categoryToDelete)
+#        session.commit()
+#        return redirect(url_for('showCategories'))
+#    else:
+#        return render_template(
+#                'deleteCategory.html', category=categoryToDelete)
 
 
 # Show a category item

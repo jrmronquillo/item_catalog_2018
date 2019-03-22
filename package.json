@@ -1,0 +1,27 @@
+{
+  "name": "item_catalog_2018",
+  "version": "1.0.0",
+  "description": "Third-Party Cookies must be enabled in the browswer, or the Google login feature will fail to login for the user",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrmronquillo/item_catalog_2018.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jrmronquillo/item_catalog_2018/issues"
+  },
+  "homepage": "https://github.com/jrmronquillo/item_catalog_2018#readme",
+  "dependencies": {
+    "grunt": "^1.0.3"
+  },
+  "devDependencies": {
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.1.0"
+  }
+}

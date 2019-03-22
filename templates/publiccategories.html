@@ -24,28 +24,22 @@
     {% if categories != [] %}
         {% for category in categories %}
 
-            <div class="post">
-                <span class="primary-text-color">{{category.created}} </span>
-                <a href="{{url_for('showItems', category_id=category.id)}}"><h3 class="secondary-text-color">{{category.name}}</h3></a>
-                <hr>
-                <h5 class="primary-text-color">Written by: {{category.author}}</h5>
-                <hr>
-                <p class="primary-text-color font-custom">{{category.content}}</p>
-                <hr>
-            </div>
 
         <div class="post">
+            <h2>{{category.id}}</h2>
             <span class="primary-text-color">{{category.created}} </span>
-            <a href="{{url_for('showItems', category_id=category.id)}}"><h3 class="secondary-text-color">{{category.name}}</h3></a>
+            <!--<a href="{{url_for('showItems', category_id=category.id)}}"> -->
+            <h3> class="secondary-text-color">{{category.name}}</h3></a>
             <hr>
             <h5 class="primary-text-color">Written by: {{category.author}}</h5>
             <hr>
-            <p class="primary-text-color font-custom">{{category.content}}</p>
+            <p class="primary-text-color font-custom long-content">{{category.content}}</p>
             <hr>
         </div>
             {% endfor %}
         {% else %}
-            <p> There is current no data. <p>
+            <p> There are currently no posts! Check back soon...  <p>
+            <p><a href='http://www.jeromeronquillo.com'>Return to HOME</a></p>
         {% endif %}
 
 
