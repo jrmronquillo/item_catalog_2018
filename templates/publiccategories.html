@@ -25,13 +25,17 @@
         {% for category in categories %}
 
             <div class="post">
+                <h2>{{category.id}}</h2>
                 <span class="primary-text-color">{{category.created}} </span>
                 <a href="{{url_for('showItems', category_id=category.id)}}"><h3 class="secondary-text-color">{{category.name}}</h3></a>
                 <hr>
                 <h5 class="primary-text-color">Written by: {{category.author}}</h5>
                 <hr>
-                <p class="primary-text-color font-custom">{{category.content}}</p>
+
+                <span class="long-content">{{ category.content }}</span>
                 <hr>
+
+
             </div>
 
         <div class="post">

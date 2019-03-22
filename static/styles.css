@@ -38,6 +38,10 @@ Secondary Text: ;
 
 }
 
+.long-content{
+  white-space: pre-wrap;
+}
+
 .nav-bar {
 
 	background-color: rgb(58, 94, 72, 1);
