@@ -1,0 +1,12 @@
+/* controller styles */
+
+.cell-text{
+	text-align:center;
+	font-size: 2em;
+}
+
+.letter{
+	border: solid;
+	width: 100px;
+	height: 100px;
+}

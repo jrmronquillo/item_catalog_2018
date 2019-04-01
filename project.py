@@ -219,8 +219,8 @@ def showItemsJSON(category_id):
 
 
 # show all categories
-@app.route('/')
-@app.route('/categories/')
+# @app.route('/')
+@app.route('/blog/')
 def showCategories():
    # categories = session.query(Categories).all()
     categories = session.query(Categories).order_by(Categories.id.desc()).all()
@@ -236,7 +236,7 @@ def showCategories():
 
 
 # create new category
-@app.route('/categories/new/', methods=['GET', 'POST'])
+@app.route('/blog/new/', methods=['GET', 'POST'])
 #@login_required
 def newCategory():
     if request.method == 'POST':
@@ -428,6 +428,14 @@ def deleteItem(category_id, categoryitem_id):
                     category_id=category_id,
                     categoryitem=categoryitemToDelete
                     )
+
+@app.route('/controller-demo', methods=['GET', 'POST'])
+def controllerDemo():
+    return render_template('controller-demo.html')
+
+@app.route('/', methods=['GET', 'POST'])
+def portfolio():
+    return render_template('portfolio.html')
 
 
 @app.errorhandler(404)

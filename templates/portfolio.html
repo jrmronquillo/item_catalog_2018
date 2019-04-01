@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class = 'pane'>
+    <h1>P-page</h1>
+    <div class="row">
+        <div class="card" style="width: 18rem; margin: 10px;">
+          <img class="card-img-top" src="{{ url_for('static', filename='images/header.png') }}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Blog</h5>
+            <p class="card-text">Project from Udacity's Full Stack Web Developer nanodegree, refactored to document my Web developer journey </p>
+            <a href="/blog" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem; margin: 10px;">
+          <img class="card-img-top" src="{{ url_for('static', filename='images/header.png') }}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Controller Web App</h5>
+            <p class="card-text">My First Web App, a UI to help software testers have easier control of multiple devices.</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem; margin: 10px;">
+          <img class="card-img-top" src="{{ url_for('static', filename='images/header.png') }}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Highlight Humble</h5>
+            <p class="card-text">My personal Photography Portfolio and place to hone in on my skills with the Wordpress framework</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
