@@ -65,6 +65,28 @@ Secondary Text: ;
   animation: color-in-out 1s;
 }
 
+.animate {
+  -webkit-animation: color-in-out 0.5s;
+  /* Safari 4.0 - 8.0 */
+  animation: color-in-out 1s;
+}
+
+.animate-delay1 {
+  animation-delay: 0.3s;
+}
+
+.animate-delay2 {
+  animation-delay: 0.6s;
+}
+
+.animate-delay3 {
+  animation-delay: 1s;
+}
+
+.animate-delay4 {
+  animation-delay: 1.3s;
+}
+
 .login-button, .logout-button, .delete-button, .create-button, .edit-button {
   font-weight: bold;
   background-color: white;
@@ -119,6 +141,12 @@ Secondary Text: ;
 .table-config-1 {
   table-layout: fixed;
   width: 200px;
+}
+
+.view-single {
+  display: none;
+  border: 1px solid;
+  height: 80%;
 }
 
 td {

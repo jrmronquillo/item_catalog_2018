@@ -124,6 +124,8 @@ class Main extends React.Component {
     this.toggleDisplay = this.toggleDisplay.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.sendCommands = this.sendCommands.bind(this);
+    this.clearKeyState = this.clearKeyState.bind(this);
+    this.keyupAction = this.keyupAction.bind(this);
   }
 
   componentDidMount(){
@@ -136,10 +138,12 @@ class Main extends React.Component {
     //}
 
     document.addEventListener('keypress', this.handleKeyPress);
+    document.addEventListener('keyup', this.keyupAction);
   }
 
   componentWillUnmount(){
     document.removeEventListener('keypress', this.handleKeyPress);
+    document.removeEventListener('keyup', this.keyupAction);
   }
 
   toggleDisplay(){
@@ -209,6 +213,19 @@ class Main extends React.Component {
     } else{
       console.log('Number of stb labels does not equal 16');
     }
+  }
+
+  clearKeyState(){
+    console.log('clearstate executed');
+    this.setState({
+      keyPressed: '',
+    });
+    console.log(this.state.keyPressed);
+  }
+
+  keyupAction(event){
+    console.log('clearkeySTate function executed');
+    setTimeout(this.clearKeyState(), 100000);
   }
 
   handleKeyPress(event){
@@ -494,9 +511,9 @@ class Main extends React.Component {
     console.log('viewerPositionMapping[key]:');
     console.log(this.state.configs[this.state.chosenConfig][1].macAddr);
     if(viewerPositionMapping[key] == '1-16'){
-      
 
       this.setState({
+        viewerPosition: viewerPositionMapping[key],
         irnetboxMac: this.state.configs[this.state.chosenConfig][1].macAddr,
         slot: '1-16',
       });
@@ -591,194 +608,255 @@ class Main extends React.Component {
 
           </header>
           <div className="row">
-            <div className="card">
-
-            </div>
-          </div>
-          <div className="col-md-6">
-            <h1>Controls </h1>
-          
-            <table className="table table-config-1">
-              <tbody>
-                <tr>
-                  <td className={this.state.keyPressed =='q'? 'letter lightblue-bg': 'letter'}>
-                    <div className="cell-text-container">
-                      <span className="cell-text">GUIDE</span><br />
-                      <span> Q</span>
-                    </div>
-                  </td>
-                  <td className={this.state.keyPressed =='w'? 'letter lightblue-bg': 'letter'}>
-                    <div className="cell-text-container">  
-                      <span className="cell-text">&uarr;</span><br />
-                    <span > W </span>
-                    </div>
-                  </td>
-                  <td className={this.state.keyPressed =='e'? 'letter lightblue-bg': 'letter'}>
-                    <div className="cell-text-container">
-                      <span className="cell-text">MENU</span><br />
-                      <span> E </span>
-                    </div>
-                  </td>
-                  <td className={this.state.keyPressed =='r'? 'letter lightblue-bg': 'letter'}>
-                    <div className="cell-text-container">
-                      <span className="cell-text">RED</span><br />
-                      <span > R </span>
-                    </div>
-                  </td>
-                   <td className={this.state.keyPressed =='t'? 'letter lightblue-bg': 'letter'}>
-                      <div className="cell-text-container">
-                        <span className="cell-text">&#9650;</span><br />
-                        <span > T </span>
-                      </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td className={this.state.keyPressed =='a'? 'letter lightblue-bg': 'letter'}>
-                    <div className="cell-text-container">
-                      <span className="cell-text">&larr;</span><br />
-                      <span> A</span>
-                    </div>
-                  </td>
-                  <td className={this.state.keyPressed =='s'? 'letter lightblue-bg': 'letter'}>
-                    <div className="cell-text-container">  
-                      <span className="cell-text">&darr;</span><br />
-                    <span > S </span>
-                    </div>
-                  </td>
-                  <td className={this.state.keyPressed =='d'? 'letter lightblue-bg': 'letter'}>
-                    <div className="cell-text-container">
-                      <span className="cell-text">&rarr;</span><br />
-                      <span> D </span>
-                    </div>
-                  </td>
-                  <td className={this.state.keyPressed =='f'? 'letter lightblue-bg': 'letter'}>
-                    <div className="cell-text-container">
-                      <span className="cell-text">INFO</span><br />
-                      <span > F </span>
-                    </div>
-                  </td>
-                   <td className={this.state.keyPressed =='g'? 'letter lightblue-bg': 'letter'}>
-                      <div className="cell-text-container">
-                        <span className="cell-text">&#9660;</span><br />
-                        <span > G </span>
-                      </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td className={this.state.keyPressed =='z'? 'letter lightblue-bg': 'letter'}>
-                    <div className="cell-text-container">
-                      <span className="cell-text">DASH</span><br />
-                      <span>Z</span>
-                    </div>
-                  </td>
-                  <td className={this.state.keyPressed =='x'? 'letter lightblue-bg': 'letter'}>
-                    <div className="cell-text-container">
-                      <span className="cell-text">EXIT</span><br />
-                      <span>X</span>
-                    </div>
-                  </td>
-                  <td className={this.state.keyPressed =='c'? 'letter lightblue-bg': 'letter'}>
-                    <div className="cell-text-container">
-                      <span className="cell-text">REW</span><br />
-                      <span>C</span>
-                    </div>
-                  </td>
-                  <td className={this.state.keyPressed =='v'? 'letter lightblue-bg': 'letter'}>
-                    <div className="cell-text-container">
-                      <span className="cell-text">PLAY</span><br />
-                      <span>V</span>
-                    </div>
-                  </td>
-                   <td className={this.state.keyPressed =='b'? 'letter lightblue-bg': 'letter'}>
-                    <div className="cell-text-container">
-                      <span className="cell-text">FFWD</span><br />
-                      <span>B</span>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-
 
             
 
-          </div>
-          <div className="col-md-6">
-             <h1>Device Selector</h1>
-             <table className="table-style">
-              <tr>
-                <td className={this.state.keyPressed =='^'? 'letter lightblue-bg': 'letter'}>
-                  <h5>STB 1</h5>
-                  <div className='model-text'>#</div>
-                  <span> &#x5e;</span>
-                </td>
-                <td className={this.state.keyPressed =='&'? 'letter lightblue-bg': 'letter'}>
-                <h5>STB 5</h5>
-                <div className='model-text'>#</div>
-                  <span> &amp;</span>
+            <div className={this.state.keyPressed == '' ? 'col-sm animate animate-delay1': 'col-sm'}>
+              <i className="fas fa-laptop"></i>
+            </div>
+             <div className={this.state.keyPressed == '' ? 'col-sm animate animate-delay2': 'col-sm'}>
+              <i className="fas fa-network-wired"></i>
+            </div>
+            <div className={this.state.keyPressed == '' ? 'col-sm animate animate-delay3': 'col-sm'}>
+              <i className="fas fa-server"></i>
+            </div>
+            <div className={this.state.keyPressed == '' ? 'col-sm animate animate-delay4': 'col-sm'}>
+              <table className="table">
+                <tbody>
+                  <tr>
+                    <td>
+                      <i className="fas fa-tv"></i>
+                    </td>
+                    <td>
+                      <i className="fas fa-tv"></i>
+                    </td>
+                    <td>
+                      <i className="fas fa-tv"></i>
+                    </td>
+                    <td>
+                      <i className="fas fa-tv"></i>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <i className="fas fa-tv"></i>
+                    </td>
+                    <td>
+                      <i className="fas fa-tv"></i>
+                    </td>
+                    <td>
+                      <i className="fas fa-tv"></i>
+                    </td>
+                    <td>
+                      <i className="fas fa-tv"></i>
+                    </td>
+                  </tr>
+                   <tr>
+                    <td>
+                      <i className="fas fa-tv"></i>
+                    </td>
+                    <td>
+                      <i className="fas fa-tv"></i>
+                    </td>
+                    <td>
+                      <i className="fas fa-tv"></i>
+                    </td>
+                    <td>
+                      <i className="fas fa-tv"></i>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-                </td>
-                <td className={this.state.keyPressed =='*'? 'letter lightblue-bg': 'letter'}>
-                  <h5>STB 9</h5>
-                  <div className='text'>#</div>
-                  <span>*</span>
-                </td>
-                <td className={this.state.keyPressed =='('? 'letter lightblue-bg': 'letter'}>
-                  <h5>STB 13</h5>
-                  <div className='model-text'>#</div>
-                  <span> (</span>
-                </td>
-              </tr>
-            </table>
-             <table className="table-style">
-              <tr>
-                <td className={this.state.keyPressed =='y'? 'letter lightblue-bg': 'letter'}>
-                  <h5> STB 2 </h5>
-                  <div className='text'>#</div>
-                  <span> Y</span>
-                </td>
-                <td className={this.state.keyPressed =='u'? 'letter lightblue-bg': 'letter'}>
-                  <h5>STB 6</h5>
-                  <div className='text'>#</div>
-                  <span>U</span>
-                </td>
-                <td className={this.state.keyPressed == 'i'? 'letter lightblue-bg': 'letter'}>
-                  <h5>STB 10</h5>
-                  <div className='text'>#</div>
-                  <span>I</span>
-                </td>
-                <td className={this.state.keyPressed  =='o'? 'letter lightblue-bg': 'letter'}>
-                  <h5>STB 14</h5>
-                  <div className='text'>#</div>
-                  <span> O</span>
-                </td>
-              </tr>
-            </table>
-            <table className="table-style">
-              <tr>
-                <td className={this.state.keyPressed == 'h'? 'letter lightblue-bg': 'letter'}>
-                  <h5>STB 3</h5>
-                  <div className='text'>#</div>
-                  <span>H</span>
-                </td>
-                <td className={this.state.keyPressed == 'j'? 'letter lightblue-bg': 'letter'}>
-                  <h5>STB 7</h5>
-                  <div className='model-text'>#</div>
-                  <span>J</span>
-                </td>
-                <td className={this.state.keyPressed =='k'? 'letter lightblue-bg': 'letter'}>
-                  <h5>STB 11</h5>
-                  <div className='text'>#</div>
-                  <span>K</span>
-                </td>
-                <td className={this.state.keyPressed =='l'? 'letter lightblue-bg': 'letter'}>
-                  <h5>STB 15</h5>
-                  <div className='text'>#</div>
-                  <span>L</span>
-                </td>
-              </tr>
-            </table>
+          </div>
+          <div className="row">
+            <div className="col-md-6">
+              
+              <h1>Controls </h1>
+              
+              <table className="table table-config-1">
+                <tbody>
+                  <tr>
+                    <td className={this.state.keyPressed =='q'? 'letter lightblue-bg': 'letter'}>
+                      <div className="cell-text-container">
+                        <span className="cell-text">GUIDE</span><br />
+                        <span> Q</span>
+                      </div>
+                    </td>
+                    <td className={this.state.keyPressed =='w'? 'letter lightblue-bg': 'letter'}>
+                      <div className="cell-text-container">  
+                        <span className="cell-text">&uarr;</span><br />
+                      <span > W </span>
+                      </div>
+                    </td>
+                    <td className={this.state.keyPressed =='e'? 'letter lightblue-bg': 'letter'}>
+                      <div className="cell-text-container">
+                        <span className="cell-text">MENU</span><br />
+                        <span> E </span>
+                      </div>
+                    </td>
+                    <td className={this.state.keyPressed =='r'? 'letter lightblue-bg': 'letter'}>
+                      <div className="cell-text-container">
+                        <span className="cell-text">RED</span><br />
+                        <span > R </span>
+                      </div>
+                    </td>
+                     <td className={this.state.keyPressed =='t'? 'letter lightblue-bg': 'letter'}>
+                        <div className="cell-text-container">
+                          <span className="cell-text">&#9650;</span><br />
+                          <span > T </span>
+                        </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className={this.state.keyPressed =='a'? 'letter lightblue-bg': 'letter'}>
+                      <div className="cell-text-container">
+                        <span className="cell-text">&larr;</span><br />
+                        <span> A</span>
+                      </div>
+                    </td>
+                    <td className={this.state.keyPressed =='s'? 'letter lightblue-bg': 'letter'}>
+                      <div className="cell-text-container">  
+                        <span className="cell-text">&darr;</span><br />
+                      <span > S </span>
+                      </div>
+                    </td>
+                    <td className={this.state.keyPressed =='d'? 'letter lightblue-bg': 'letter'}>
+                      <div className="cell-text-container">
+                        <span className="cell-text">&rarr;</span><br />
+                        <span> D </span>
+                      </div>
+                    </td>
+                    <td className={this.state.keyPressed =='f'? 'letter lightblue-bg': 'letter'}>
+                      <div className="cell-text-container">
+                        <span className="cell-text">INFO</span><br />
+                        <span > F </span>
+                      </div>
+                    </td>
+                     <td className={this.state.keyPressed =='g'? 'letter lightblue-bg': 'letter'}>
+                        <div className="cell-text-container">
+                          <span className="cell-text">&#9660;</span><br />
+                          <span > G </span>
+                        </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className={this.state.keyPressed =='z'? 'letter lightblue-bg': 'letter'}>
+                      <div className="cell-text-container">
+                        <span className="cell-text">DASH</span><br />
+                        <span>Z</span>
+                      </div>
+                    </td>
+                    <td className={this.state.keyPressed =='x'? 'letter lightblue-bg': 'letter'}>
+                      <div className="cell-text-container">
+                        <span className="cell-text">EXIT</span><br />
+                        <span>X</span>
+                      </div>
+                    </td>
+                    <td className={this.state.keyPressed =='c'? 'letter lightblue-bg': 'letter'}>
+                      <div className="cell-text-container">
+                        <span className="cell-text">REW</span><br />
+                        <span>C</span>
+                      </div>
+                    </td>
+                    <td className={this.state.keyPressed =='v'? 'letter lightblue-bg': 'letter'}>
+                      <div className="cell-text-container">
+                        <span className="cell-text">PLAY</span><br />
+                        <span>V</span>
+                      </div>
+                    </td>
+                     <td className={this.state.keyPressed =='b'? 'letter lightblue-bg': 'letter'}>
+                      <div className="cell-text-container">
+                        <span className="cell-text">FFWD</span><br />
+                        <span>B</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+
+              
+
+            </div>
+            <div className="col-md-6">
+               <h1>Device Selector</h1>
+               <div className='view-single'>
+              </div>
+               <table className="table">
+                <tbody>
+                  <tr>
+                    <td className={this.state.viewerPosition =='1'? 'letter lightblue-bg': 'letter'}>
+                      <h5>STB 1</h5>
+                      <div className='model-text'>#</div>
+                      <span> &#x5e;</span>
+                    </td>
+                    <td className={this.state.keyPressed =='&'? 'letter lightblue-bg': 'letter'}>
+                    <h5>STB 5</h5>
+                    <div className='model-text'>#</div>
+                      <span> &amp;</span>
+
+                    </td>
+                    <td className={this.state.keyPressed =='*'? 'letter lightblue-bg': 'letter'}>
+                      <h5>STB 9</h5>
+                      <div className='text'>#</div>
+                      <span>*</span>
+                    </td>
+                    <td className={this.state.keyPressed =='('? 'letter lightblue-bg': 'letter'}>
+                      <h5>STB 13</h5>
+                      <div className='model-text'>#</div>
+                      <span> (</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className={this.state.keyPressed =='y'? 'letter lightblue-bg': 'letter'}>
+                      <h5> STB 2 </h5>
+                      <div className='text'>#</div>
+                      <span> Y</span>
+                    </td>
+                    <td className={this.state.keyPressed =='u'? 'letter lightblue-bg': 'letter'}>
+                      <h5>STB 6</h5>
+                      <div className='text'>#</div>
+                      <span>U</span>
+                    </td>
+                    <td className={this.state.keyPressed == 'i'? 'letter lightblue-bg': 'letter'}>
+                      <h5>STB 10</h5>
+                      <div className='text'>#</div>
+                      <span>I</span>
+                    </td>
+                    <td className={this.state.keyPressed  =='o'? 'letter lightblue-bg': 'letter'}>
+                      <h5>STB 14</h5>
+                      <div className='text'>#</div>
+                      <span> O</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className={this.state.keyPressed == 'h'? 'letter lightblue-bg': 'letter'}>
+                      <h5>STB 3</h5>
+                      <div className='text'>#</div>
+                      <span>H</span>
+                    </td>
+                    <td className={this.state.keyPressed == 'j'? 'letter lightblue-bg': 'letter'}>
+                      <h5>STB 7</h5>
+                      <div className='model-text'>#</div>
+                      <span>J</span>
+                    </td>
+                    <td className={this.state.keyPressed =='k'? 'letter lightblue-bg': 'letter'}>
+                      <h5>STB 11</h5>
+                      <div className='text'>#</div>
+                      <span>K</span>
+                    </td>
+                    <td className={this.state.keyPressed =='l'? 'letter lightblue-bg': 'letter'}>
+                      <h5>STB 15</h5>
+                      <div className='text'>#</div>
+                      <span>L</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <div className="row">
               <p>key pressed: </p>
               <h1>{this.state.keyPressed}</h1>
@@ -787,6 +865,8 @@ class Main extends React.Component {
               <p>viewer position:</p>
               <h1>{this.state.viewerPosition}</h1>
             </div>
+
+
           </div>
       </div>
         )
