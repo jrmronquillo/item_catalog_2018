@@ -15,6 +15,16 @@ Highlights: ;
 Primary Text: #DE9391
 Secondary Text: ;
 */
+.cell-text-container {
+  text-align: center;
+}
+
+.cell-text {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1em;
+  width: 100%;
+}
+
 .col-centered {
   float: none;
   margin: 0 auto;
@@ -33,9 +43,26 @@ Secondary Text: ;
   font-family: "Ubuntu", sans-serif;
 }
 
+.header1 {
+  width: 100%;
+  height: 200px;
+  background-image: url("../images/header.png");
+}
+
 .header-image {
   max-width: 100%;
   height: auto;
+}
+
+.letter {
+  border: 3px solid #000;
+}
+
+.lightblue-bg {
+  /*background-color: lightblue;*/
+  -webkit-animation: color-in-out 1s;
+  /* Safari 4.0 - 8.0 */
+  animation: color-in-out 1s;
 }
 
 .login-button, .logout-button, .delete-button, .create-button, .edit-button {
@@ -89,6 +116,15 @@ Secondary Text: ;
   color: #000;
 }
 
+.table-config-1 {
+  table-layout: fixed;
+  width: 200px;
+}
+
+td {
+  border-top: 3px solid !important;
+}
+
 .title-text {
   font-size: 3em;
 }
@@ -136,6 +172,17 @@ strong {
 @media (max-width: 700px) {
   .post {
     margin: 1em;
+  }
+}
+@keyframes color-in-out {
+  0% {
+    background-color: white;
+  }
+  50% {
+    background-color: lightblue;
+  }
+  100% {
+    background-color: white;
   }
 }
 

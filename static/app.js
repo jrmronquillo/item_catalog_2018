@@ -565,6 +565,7 @@ class Main extends React.Component {
 
 
     if(controlCommands[key]){
+      
       this.setState({
         command: controlCommands[key]
       });
@@ -586,95 +587,124 @@ class Main extends React.Component {
     if(this.state.display){
       return(
         <div className="row">
-          <div className="col-md-5">
+          <header className='header1'>
+
+          </header>
+          <div className="row">
+            <div className="card">
+
+            </div>
+          </div>
+          <div className="col-md-6">
             <h1>Controls </h1>
+          
+            <table className="table table-config-1">
+              <tbody>
+                <tr>
+                  <td className={this.state.keyPressed =='q'? 'letter lightblue-bg': 'letter'}>
+                    <div className="cell-text-container">
+                      <span className="cell-text">GUIDE</span><br />
+                      <span> Q</span>
+                    </div>
+                  </td>
+                  <td className={this.state.keyPressed =='w'? 'letter lightblue-bg': 'letter'}>
+                    <div className="cell-text-container">  
+                      <span className="cell-text">&uarr;</span><br />
+                    <span > W </span>
+                    </div>
+                  </td>
+                  <td className={this.state.keyPressed =='e'? 'letter lightblue-bg': 'letter'}>
+                    <div className="cell-text-container">
+                      <span className="cell-text">MENU</span><br />
+                      <span> E </span>
+                    </div>
+                  </td>
+                  <td className={this.state.keyPressed =='r'? 'letter lightblue-bg': 'letter'}>
+                    <div className="cell-text-container">
+                      <span className="cell-text">RED</span><br />
+                      <span > R </span>
+                    </div>
+                  </td>
+                   <td className={this.state.keyPressed =='t'? 'letter lightblue-bg': 'letter'}>
+                      <div className="cell-text-container">
+                        <span className="cell-text">&#9650;</span><br />
+                        <span > T </span>
+                      </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td className={this.state.keyPressed =='a'? 'letter lightblue-bg': 'letter'}>
+                    <div className="cell-text-container">
+                      <span className="cell-text">&larr;</span><br />
+                      <span> A</span>
+                    </div>
+                  </td>
+                  <td className={this.state.keyPressed =='s'? 'letter lightblue-bg': 'letter'}>
+                    <div className="cell-text-container">  
+                      <span className="cell-text">&darr;</span><br />
+                    <span > S </span>
+                    </div>
+                  </td>
+                  <td className={this.state.keyPressed =='d'? 'letter lightblue-bg': 'letter'}>
+                    <div className="cell-text-container">
+                      <span className="cell-text">&rarr;</span><br />
+                      <span> D </span>
+                    </div>
+                  </td>
+                  <td className={this.state.keyPressed =='f'? 'letter lightblue-bg': 'letter'}>
+                    <div className="cell-text-container">
+                      <span className="cell-text">INFO</span><br />
+                      <span > F </span>
+                    </div>
+                  </td>
+                   <td className={this.state.keyPressed =='g'? 'letter lightblue-bg': 'letter'}>
+                      <div className="cell-text-container">
+                        <span className="cell-text">&#9660;</span><br />
+                        <span > G </span>
+                      </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td className={this.state.keyPressed =='z'? 'letter lightblue-bg': 'letter'}>
+                    <div className="cell-text-container">
+                      <span className="cell-text">DASH</span><br />
+                      <span>Z</span>
+                    </div>
+                  </td>
+                  <td className={this.state.keyPressed =='x'? 'letter lightblue-bg': 'letter'}>
+                    <div className="cell-text-container">
+                      <span className="cell-text">EXIT</span><br />
+                      <span>X</span>
+                    </div>
+                  </td>
+                  <td className={this.state.keyPressed =='c'? 'letter lightblue-bg': 'letter'}>
+                    <div className="cell-text-container">
+                      <span className="cell-text">REW</span><br />
+                      <span>C</span>
+                    </div>
+                  </td>
+                  <td className={this.state.keyPressed =='v'? 'letter lightblue-bg': 'letter'}>
+                    <div className="cell-text-container">
+                      <span className="cell-text">PLAY</span><br />
+                      <span>V</span>
+                    </div>
+                  </td>
+                   <td className={this.state.keyPressed =='b'? 'letter lightblue-bg': 'letter'}>
+                    <div className="cell-text-container">
+                      <span className="cell-text">FFWD</span><br />
+                      <span>B</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+
+
             
 
-            <table className="table-style">
-              <tr>
-                <td className={this.state.keyPressed =='q'? 'letter lightblue-bg': 'letter'}>
-                  <div>
-                    <span class="cell-text">GUIDE</span>
-                  </div>
-                  <span> Q</span>
-                </td>
-                <td className={this.state.keyPressed =='w'? 'letter lightblue-bg': 'letter'}>
-                  <h1>&uarr;</h1>
-                  <span > W </span> <br />
-                </td>
-                <td className={this.state.keyPressed =='e'? 'letter lightblue-bg': 'letter'}>
-                  <h1>MENU</h1>
-                  <span> E </span>
-                </td>
-                <td className={this.state.keyPressed =='r'? 'letter lightblue-bg': 'letter'}>
-                  <h1>RED</h1>
-                  <span > R </span>
-                </td>
-                 <td className={this.state.keyPressed =='t'? 'letter lightblue-bg': 'letter'}>
-                  <h1>&#9650;</h1>
-                  <span > T </span>
-                </td>
-              </tr>
-            </table>
-            <table className="table-style" >
-              <tr>
-                <td className={this.state.keyPressed =='a'? 'letter lightblue-bg': 'letter'}>
-                  <h1>&larr;</h1>
-                  <span >A</span>
-                </td>
-                <td className={this.state.keyPressed =='s'? 'letter lightblue-bg': 'letter'}>
-                  <h1>&darr;</h1>
-                  <span >S</span>
-                </td>
-                <td className={this.state.keyPressed =='d'? 'letter lightblue-bg': 'letter'}>
-                  <h1>&rarr;</h1>
-                  <span >D</span>
-                </td>
-                <td className={this.state.keyPressed =='f'? 'letter lightblue-bg': 'letter'}>
-                  <h1>INFO</h1>
-                  <span>F</span>
-                </td>
-                <td className={this.state.keyPressed =='g'? 'letter lightblue-bg': 'letter'}>
-                  <h1>&#9660;</h1>
-                  <span>G</span>
-                </td>
-              </tr>
-            </table>
-              <table className="table-style" >
-              <tr>
-                <td className={this.state.keyPressed =='z'? 'letter lightblue-bg': 'letter'}>
-                  <h1>DASH</h1>
-                  <span>Z</span>
-                </td>
-                <td className={this.state.keyPressed =='x'? 'letter lightblue-bg': 'letter'}>
-                  <h1>EXIT</h1>
-                  <span>X</span>
-                </td>
-                <td className={this.state.keyPressed =='c'? 'letter lightblue-bg': 'letter'}>
-                  <h1>REW</h1>
-                  <span>C</span>
-                </td>
-                <td className={this.state.keyPressed =='v'? 'letter lightblue-bg': 'letter'}>
-                  <h1>PLAY</h1>
-                  <span>V</span>
-                </td>
-                 <td className={this.state.keyPressed =='b'? 'letter lightblue-bg': 'letter'}>
-                  <h1>FFWD</h1>
-                  <span>B</span>
-                </td>
-              </tr>
-            </table>
-            <p>key pressed: </p>
-            <h1>{this.state.keyPressed}</h1>
-            <p>command:</p>
-            <h1>{this.state.command}</h1>
-            <h1>true</h1>
-            <form method='post'>
-              <input type='text' name='name' />
-              <input type='submit' key='submit' />
-            </form>
           </div>
-          <div className="col-md-5">
+          <div className="col-md-6">
              <h1>Device Selector</h1>
              <table className="table-style">
               <tr>
@@ -698,19 +728,6 @@ class Main extends React.Component {
                   <h5>STB 13</h5>
                   <div className='model-text'>#</div>
                   <span> (</span>
-                </td>
-                <td className={this.state.keyPressed ==')'? 'letter lightblue-bg': 'letter'}>
-                  <h5>hx2x rack B12</h5>
-                  <div className='text'>#</div>
-                  <span> )</span>
-                </td>
-                <td className={this.state.keyPressed =='-'? 'letter lightblue-bg': 'letter'}>
-                  <h5>hx2x rack B11</h5>
-                  <span className="letter">_</span>
-                </td>
-                <td className={this.state.keyPressed =='-'? 'letter lightblue-bg': 'letter'}>
-                  <h5>unassigned</h5>
-                  <span className="letter">=</span>
                 </td>
               </tr>
             </table>
@@ -736,10 +753,6 @@ class Main extends React.Component {
                   <div className='text'>#</div>
                   <span> O</span>
                 </td>
-                <td className={this.state.keyPressed =="&#92;"? 'letter lightblue-bg': 'letter'}>
-                  <h5>Multiviewer Config 3 (B11/B10)</h5>
-                  <span>&#92;</span>
-                </td>
               </tr>
             </table>
             <table className="table-style">
@@ -764,18 +777,16 @@ class Main extends React.Component {
                   <div className='text'>#</div>
                   <span>L</span>
                 </td>
-                <td className={this.state.keyPressed ==';'? 'letter lightblue-bg': 'letter'}>
-                  <h5>MultiViewer Config 4 (HS17 WS)</h5>
-                  <span className="letter">&#59;</span>
-                </td>
-                <td className={this.state.keyPressed =="'"? 'letter lightblue-bg': 'letter'}>
-                  <h5>Multiviewer Config 5 (Rack B15/B16) </h5>
-                  <span className="letter">&apos;</span>
-                </td>
               </tr>
             </table>
-            <p>viewer position:</p>
-            <h1>{this.state.viewerPosition}</h1>
+            <div className="row">
+              <p>key pressed: </p>
+              <h1>{this.state.keyPressed}</h1>
+              <p>command:</p>
+              <h1>{this.state.command}</h1>
+              <p>viewer position:</p>
+              <h1>{this.state.viewerPosition}</h1>
+            </div>
           </div>
       </div>
         )
