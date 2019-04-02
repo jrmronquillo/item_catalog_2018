@@ -21,6 +21,38 @@ $primary-color: #3A5E48;
 $primary-text-color: #000;
 $primary-font: 'Ubuntu', sans-serif;
 
+
+.animate{
+   -webkit-animation: color-in-out .5s ; /* Safari 4.0 - 8.0 */
+    animation: color-in-out 1s ;
+}
+
+.animate2{
+  -webkit-animation: color-in-outt .5s ; /* Safari 4.0 - 8.0 */
+  animation: color-in-outt 1s ;
+}
+
+.animate-delay1{
+    animation-delay: .3s;
+}
+
+.animate-delay2{
+  animation-delay: .6s;
+}
+
+.animate-delay3{
+  animation-delay: 1s;
+}
+
+.animate-delay4{
+  animation-delay: 1.3s;
+}
+
+.animate-delay5{
+  animation-delay: 1.6s;
+}
+
+
 .cell-text-container{
   text-align: center;
 }
@@ -69,30 +101,33 @@ $primary-font: 'Ubuntu', sans-serif;
 
 .lightblue-bg{
   /*background-color: lightblue;*/
-  -webkit-animation: color-in-out 1s ; /* Safari 4.0 - 8.0 */
-  animation: color-in-out 1s ;
+  -webkit-animation: color-in-out-stay 1s; /* Safari 4.0 - 8.0 */
+  animation: color-in-out-stay 1s;
+  animation-fill-mode: forwards;
 }
 
-.animate{
-   -webkit-animation: color-in-out .5s ; /* Safari 4.0 - 8.0 */
-    animation: color-in-out 1s ;
+.lightblue-bg-stay{
+  /*background-color: lightblue;*/
+  -webkit-animation: color-in-out-stay 1s; /* Safari 4.0 - 8.0 */
+  animation: color-in-out-stay .5s;
+  animation-fill-mode: forwards;
+  animation-delay: 2s;
 }
 
-.animate-delay1{
-    animation-delay: .3s;
+.lightblue-bg-stay-2{
+  /*background-color: lightblue;*/
+  -webkit-animation: color-in-out-stayy 1s; /* Safari 4.0 - 8.0 */
+  animation: color-in-out-stayy .5s;
+  animation-fill-mode: forwards;
+  animation-delay: 1.5s;
 }
 
-.animate-delay2{
-  animation-delay: .6s;
+.lightblue-bg-transition{
+  background-color: lightblue;
+  transition: background-color 2s;
+  transition-delay: 5s;
 }
 
-.animate-delay3{
-  animation-delay: 1s;
-}
-
-.animate-delay4{
-  animation-delay: 1.3s;
-}
 
 
 .login-button, .logout-button, .delete-button, .create-button, .edit-button {
@@ -162,20 +197,34 @@ $primary-font: 'Ubuntu', sans-serif;
   width: 200px;
 }
 
+.two-X{
+  font-size: 2em;
+}
+.middle{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .view-single{
   display: none;
   border: 1px solid;
   height: 80%;
 }
 
-td {
-  border-top: 3px solid !important;
-}
 
 .title-text{
 	font-size: 3em;
+  /*animation: bounce 1s infinite;*/
+  float: left;
 }
 
+.title-text-bounce{
+  animation: bounce 1s infinite;
+}
+
+.title-text-container{
+  width: 100%
+}
 .up-arrow{
   display: none;
   position: fixed;
@@ -217,24 +266,78 @@ strong {
     color: red;
 }
 
+td {
+  border-top: 3px solid !important;
+}
+
+
 @media (max-width: 700px){
     .post{
       margin: 1em;
     }
 
+}
+
+@keyframes color-in-out{
+  0%{
+    background-color: white;
+    transform: translate(1px, 1px) rotate(0deg);
+    }
+
+  50%{
+      /*background-color: lightblue;*/
+      transform: translate(-1px, 2px) rotate(50deg);
   }
 
-  @keyframes color-in-out{
-    0%{
+  100%{
       background-color: white;
-
-    }
-
-    50%{
-      background-color: lightblue;
-    }
-
-    100%{
-      background-color: white;
-    }
+      transform: translate(1px, -2px) rotate(-1deg);
   }
+}
+
+@keyframes color-in-outt{
+  0%{
+    background-color: white;
+    transform: translate(1px, 1px) rotate(0deg);
+    }
+
+  50%{
+      /*background-color: lightblue;*/
+      transform: translate(-1px, 2px) rotate(50deg);
+  }
+
+  100%{
+      background-color: white;
+      transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+@keyframes color-in-out-stay{
+  0% {
+        background-color: white;
+     }
+
+  100% {
+        background-color: lightblue;
+       }
+  }
+  @keyframes color-in-out-stayy{
+  0% {
+        background-color: white;
+     }
+
+  100% {
+        background-color: lightblue;
+       }
+  }
+
+  @keyframes bounce{
+        0%   { transform: translateY(0); }
+        30%  { transform: translateY(-50px); }
+        50%  { transform: translateY(0); }
+        100% { transform: translateY(0); }
+    }
+
+
+
+  

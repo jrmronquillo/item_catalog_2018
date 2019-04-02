@@ -11,6 +11,7 @@ class Main extends React.Component {
       display: true,
       keyPressed: '',
       command: '',
+      prevState: true,
       viewerConfig: [],
       keys: ['q','w', 'e', 'r', 't', 'y'],
       keyObjects: { 
@@ -176,14 +177,14 @@ class Main extends React.Component {
     if(this.state.multipleMacs){
       var newArr = this.state.macsInConfig.forEach(function(currVal){
         console.log('------');
-        fetch('http://localhost:3000/redesign/command/'+currVal+'/'+this.state.slot+'/'+this.state.command); 
+        //fetch('http://localhost:3000/redesign/command/'+currVal+'/'+this.state.slot+'/'+this.state.command); 
       }, this);
     }
 
     if(this.state.irnetboxMac && this.state.slot && this.state.command){
       console.log('if statement executed');
       console.log('http://localhost:3000/redesign/command/'+this.state.irnetboxMac+'/'+this.state.slot+'/'+this.state.command);
-      fetch('http://localhost:3000/redesign/command/'+this.state.irnetboxMac+'/'+this.state.slot+'/'+this.state.command);
+      //fetch('http://localhost:3000/redesign/command/'+this.state.irnetboxMac+'/'+this.state.slot+'/'+this.state.command);
     } else {
       console.log('invalid mac, slot, command');
     }
@@ -209,7 +210,7 @@ class Main extends React.Component {
     if(stbLabelsArr.length == 16){
       var commandStr = 'http://localhost:3000/setLabels/'+stbLabelsArr.join('/');
       console.log(commandStr);
-      fetch(commandStr);
+      //fetch(commandStr);
     } else{
       console.log('Number of stb labels does not equal 16');
     }
@@ -217,15 +218,26 @@ class Main extends React.Component {
 
   clearKeyState(){
     console.log('clearstate executed');
+    //this.setState({
+    //  keyPressed: '',
+    //});
+
     this.setState({
-      keyPressed: '',
+      prevState: !this.state.prevState,
     });
+    console.log('####PrevState');
+    console.log(this.state.prevState);
+
     console.log(this.state.keyPressed);
   }
 
   keyupAction(event){
     console.log('clearkeySTate function executed');
     setTimeout(this.clearKeyState(), 100000);
+    console.log('test output');
+    console.log(this.state.viewerPosition);
+    console.log('keyPressed:');
+    console.log(this.state.keyPressed);
   }
 
   handleKeyPress(event){
@@ -462,7 +474,7 @@ class Main extends React.Component {
                             'p':'19',
                             '/':'1-16'
                             };
-    console.log('viewerPositionMapping');
+    console.log('viewerPositionMapping--------');
     console.log(viewerPositionMapping[key]);                        
     var stbs = {
       '1': {macAddr: '00-80-A3-A9-E3-7A', slot: '1', model: 'H44-500', vidRouteMoniker: 'r3s1'},
@@ -506,12 +518,12 @@ class Main extends React.Component {
                           '19':'00-80-A3-9D-86-D3'
                             };
     
-
+    console.log('viewerPositionMapping[key]');
     console.log(viewerPositionMapping[key]);
     console.log('viewerPositionMapping[key]:');
     console.log(this.state.configs[this.state.chosenConfig][1].macAddr);
+    // check if selection is for one slot or for all slots 1-16
     if(viewerPositionMapping[key] == '1-16'){
-
       this.setState({
         viewerPosition: viewerPositionMapping[key],
         irnetboxMac: this.state.configs[this.state.chosenConfig][1].macAddr,
@@ -523,12 +535,14 @@ class Main extends React.Component {
         this.setState({
         //irnetboxMac: stbs[viewerPositionMapping[key]].macAddr,
         //slot: stbs[viewerPositionMapping[key]].slot
+        viewerPosition: viewerPositionMapping[key],
         irnetboxMac: this.state.configs[this.state.chosenConfig][viewerPositionMapping[key]].macAddr,
       
         slot: this.state.configs[this.state.chosenConfig][viewerPositionMapping[key]].slot,
         multipleMacs: false,     
         
       });
+
     } else {
       console.log('viewerPostionMapping[key] not detected');
     }
@@ -573,7 +587,7 @@ class Main extends React.Component {
       console.log('setVideoCall:');
       console.log(setVideoCall);
       
-      fetch(setVideoCall);
+      //fetch(setVideoCall);
 
       this.sendLabelNames();
     }
@@ -609,72 +623,98 @@ class Main extends React.Component {
           </header>
           <div className="row">
 
-            
-
-            <div className={this.state.keyPressed == '' ? 'col-sm animate animate-delay1': 'col-sm'}>
-              <i className="fas fa-laptop"></i>
-            </div>
-             <div className={this.state.keyPressed == '' ? 'col-sm animate animate-delay2': 'col-sm'}>
-              <i className="fas fa-network-wired"></i>
-            </div>
-            <div className={this.state.keyPressed == '' ? 'col-sm animate animate-delay3': 'col-sm'}>
-              <i className="fas fa-server"></i>
-            </div>
-            <div className={this.state.keyPressed == '' ? 'col-sm animate animate-delay4': 'col-sm'}>
-              <table className="table">
-                <tbody>
+             <div className="col-lg">
+                <table className="table">
+                  <tbody>
                   <tr>
                     <td>
-                      <i className="fas fa-tv"></i>
+                      1. Select Device:
                     </td>
                     <td>
-                      <i className="fas fa-tv"></i>
-                    </td>
-                    <td>
-                      <i className="fas fa-tv"></i>
-                    </td>
-                    <td>
-                      <i className="fas fa-tv"></i>
+                      {this.state.viewerPosition}
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <i className="fas fa-tv"></i>
+                      2. Select Control Command:
                     </td>
                     <td>
+                      {this.state.command} (Key: {this.state.keyPressed})
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              
+            </div>
+
+
+            <div className={this.state.prevState ? 'col-sm animate animate-delay1 middle': 'col-sm animate2 animate-delay1 middle'}>
+              <i className="fas fa-laptop two-X"></i>
+            </div>
+            <div className={this.state.prevState ? 'col-sm animate animate-delay2 middle': 'col-sm animate2 animate-delay2 middle'}>
+              <i className="fas fa-network-wired"></i>
+            </div>
+            <div className={this.state.prevState ? 'col-sm animate animate-delay3 middle': 'col-sm animate2 animate-delay3 middle'}>
+              <i className="fas fa-server two-X"></i>
+
+            </div>
+            <div className={this.state.prevState ? 'col-sm animate animate-delay4 middle': 'col-sm animate2 animate-delay4 middle'}>
+              <i className="fas fa-network-wired"></i>
+            </div>
+
+            <div className='col-sm'>
+              <table className="table">
+                <tbody className="middle">
+                  <tr>
+                    <td className={this.state.viewerPosition !== '1' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
                       <i className="fas fa-tv"></i>
                     </td>
-                    <td>
+                    <td className={this.state.viewerPosition !== '5' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
                       <i className="fas fa-tv"></i>
                     </td>
-                    <td>
+                    <td className={this.state.viewerPosition !== '9' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
+                      <i className="fas fa-tv"></i>
+                    </td>
+                    <td className={this.state.viewerPosition !== '13' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
+                      <i className="fas fa-tv"></i>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className={this.state.viewerPosition !== '2' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
+                      <i className="fas fa-tv"></i>
+                    </td>
+                    <td className={this.state.viewerPosition !== '6' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
+                      <i className="fas fa-tv"></i>
+                    </td>
+                    <td className={this.state.viewerPosition !== '10' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
+                      <i className="fas fa-tv"></i>
+                    </td>
+                    <td className={this.state.viewerPosition !== '14' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
                       <i className="fas fa-tv"></i>
                     </td>
                   </tr>
                    <tr>
-                    <td>
+                    <td className={this.state.viewerPosition !== '3' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
                       <i className="fas fa-tv"></i>
                     </td>
-                    <td>
+                    <td className={this.state.viewerPosition !== '7' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
                       <i className="fas fa-tv"></i>
                     </td>
-                    <td>
+                    <td className={this.state.viewerPosition !== '11' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
                       <i className="fas fa-tv"></i>
                     </td>
-                    <td>
+                    <td className={this.state.viewerPosition !== '15' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
                       <i className="fas fa-tv"></i>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-
+  
           </div>
           <div className="row">
             <div className="col-md-6">
-              
-              <h1>Controls </h1>
-              
+                <h1>Controls</h1>{this.state.command && !this.state.viewerPosition && <div> Please Select a Device </div> }
               <table className="table table-config-1">
                 <tbody>
                   <tr>
@@ -782,89 +822,79 @@ class Main extends React.Component {
 
             </div>
             <div className="col-md-6">
-               <h1>Device Selector</h1>
+              <div className="title-text-container">
+                  <span className="title-text">Device Selector</span>
+                
+                <div className="title-text-bounce">
+                  {!this.state.viewerPosition && <span className="">Select a Device</span>}
+                </div>
+              </div>
                <div className='view-single'>
               </div>
                <table className="table">
                 <tbody>
                   <tr>
-                    <td className={this.state.viewerPosition =='1'? 'letter lightblue-bg': 'letter'}>
+                    <td className={this.state.viewerPosition == '1' ? 'letter lightblue-bg': 'letter'}>
                       <h5>STB 1</h5>
-                      <div className='model-text'>#</div>
+
                       <span> &#x5e;</span>
                     </td>
-                    <td className={this.state.keyPressed =='&'? 'letter lightblue-bg': 'letter'}>
+                    <td className={this.state.viewerPosition == '5' ? 'letter lightblue-bg': 'letter'}>
                     <h5>STB 5</h5>
-                    <div className='model-text'>#</div>
                       <span> &amp;</span>
 
                     </td>
-                    <td className={this.state.keyPressed =='*'? 'letter lightblue-bg': 'letter'}>
+                    <td className={this.state.viewerPosition == '9' ? 'letter lightblue-bg': 'letter'}>
                       <h5>STB 9</h5>
-                      <div className='text'>#</div>
                       <span>*</span>
                     </td>
-                    <td className={this.state.keyPressed =='('? 'letter lightblue-bg': 'letter'}>
+                    <td className={this.state.viewerPosition == '13' ? 'letter lightblue-bg': 'letter'}>
                       <h5>STB 13</h5>
-                      <div className='model-text'>#</div>
+
                       <span> (</span>
                     </td>
                   </tr>
                   <tr>
-                    <td className={this.state.keyPressed =='y'? 'letter lightblue-bg': 'letter'}>
+                    <td className={this.state.viewerPosition == '2' ? 'letter lightblue-bg': 'letter'}>
                       <h5> STB 2 </h5>
-                      <div className='text'>#</div>
                       <span> Y</span>
                     </td>
-                    <td className={this.state.keyPressed =='u'? 'letter lightblue-bg': 'letter'}>
+                    <td className={this.state.viewerPosition == '6' ? 'letter lightblue-bg': 'letter'}>
                       <h5>STB 6</h5>
-                      <div className='text'>#</div>
                       <span>U</span>
                     </td>
-                    <td className={this.state.keyPressed == 'i'? 'letter lightblue-bg': 'letter'}>
+                    <td className={this.state.viewerPosition == '10' ? 'letter lightblue-bg': 'letter'}>
                       <h5>STB 10</h5>
-                      <div className='text'>#</div>
                       <span>I</span>
                     </td>
-                    <td className={this.state.keyPressed  =='o'? 'letter lightblue-bg': 'letter'}>
+                    <td className={this.state.viewerPosition == '14' ? 'letter lightblue-bg': 'letter'}>
                       <h5>STB 14</h5>
-                      <div className='text'>#</div>
                       <span> O</span>
                     </td>
                   </tr>
                   <tr>
-                    <td className={this.state.keyPressed == 'h'? 'letter lightblue-bg': 'letter'}>
+                    <td className={this.state.viewerPosition == '3' ? 'letter lightblue-bg': 'letter'}>
                       <h5>STB 3</h5>
-                      <div className='text'>#</div>
                       <span>H</span>
                     </td>
-                    <td className={this.state.keyPressed == 'j'? 'letter lightblue-bg': 'letter'}>
+                    <td className={this.state.viewerPosition == '7' ? 'letter lightblue-bg': 'letter'}>
                       <h5>STB 7</h5>
-                      <div className='model-text'>#</div>
+
                       <span>J</span>
                     </td>
-                    <td className={this.state.keyPressed =='k'? 'letter lightblue-bg': 'letter'}>
+                    <td className={this.state.viewerPosition == '11' ? 'letter lightblue-bg': 'letter'}>
                       <h5>STB 11</h5>
-                      <div className='text'>#</div>
                       <span>K</span>
                     </td>
-                    <td className={this.state.keyPressed =='l'? 'letter lightblue-bg': 'letter'}>
+                    <td className={this.state.viewerPosition == '15' ? 'letter lightblue-bg': 'letter'}>
                       <h5>STB 15</h5>
-                      <div className='text'>#</div>
                       <span>L</span>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <div className="row">
-              <p>key pressed: </p>
-              <h1>{this.state.keyPressed}</h1>
-              <p>command:</p>
-              <h1>{this.state.command}</h1>
-              <p>viewer position:</p>
-              <h1>{this.state.viewerPosition}</h1>
-            </div>
+            
 
 
           </div>
