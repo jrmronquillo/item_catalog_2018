@@ -15,6 +15,19 @@ Highlights: ;
 Primary Text: #DE9391
 Secondary Text: ;
 */
+.action-highlight {
+  background-color: green;
+  padding: 10px;
+  border-radius: 25px;
+}
+
+.action-highlight-red {
+  background-color: red;
+  padding: 10px;
+  border-radius: 25px;
+  color: white;
+}
+
 .animate {
   -webkit-animation: color-in-out 0.5s;
   /* Safari 4.0 - 8.0 */
@@ -47,6 +60,10 @@ Secondary Text: ;
   animation-delay: 1.6s;
 }
 
+.border-dashed {
+  border: 5px dashed;
+}
+
 .cell-text-container {
   text-align: center;
 }
@@ -55,6 +72,10 @@ Secondary Text: ;
   font-family: "Ubuntu", sans-serif;
   font-size: 1em;
   width: 100%;
+}
+
+.center-text {
+  text-align: center;
 }
 
 .col-centered {
@@ -87,7 +108,8 @@ Secondary Text: ;
 }
 
 .letter {
-  border: 3px solid #000;
+  /*border: 3px solid #000;*/
+  text-align: center;
 }
 
 .lightblue-bg {
@@ -173,6 +195,10 @@ Secondary Text: ;
   color: #000;
 }
 
+.table-borders {
+  border: 3px solid #000;
+}
+
 .table-config-1 {
   table-layout: fixed;
   width: 200px;
@@ -187,6 +213,10 @@ Secondary Text: ;
   margin-bottom: auto;
 }
 
+.secondary-text {
+  color: orange;
+}
+
 .view-single {
   display: none;
   border: 1px solid;
@@ -196,6 +226,11 @@ Secondary Text: ;
 .title-text {
   font-size: 3em;
   /*animation: bounce 1s infinite;*/
+  float: left;
+}
+
+.title-text-subtext {
+  font-size: 1em;
   float: left;
 }
 
@@ -216,6 +251,10 @@ Secondary Text: ;
   height: 2px;
   font-size: 50px;
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+.visual-container {
+  width: 100%;
 }
 
 a {
@@ -248,7 +287,9 @@ strong {
 }
 
 td {
-  border-top: 3px solid !important;
+  /*border-top: 3px solid !important;*/
+  background-color: #5192C6;
+  border-radius: 25px;
 }
 
 @media (max-width: 700px) {
@@ -277,7 +318,7 @@ td {
   }
   50% {
     /*background-color: lightblue;*/
-    transform: translate(-1px, 2px) rotate(50deg);
+    transform: translate(-1px, 2px) rotate(30deg);
   }
   100% {
     background-color: white;
@@ -305,7 +346,7 @@ td {
     transform: translateY(0);
   }
   30% {
-    transform: translateY(-50px);
+    transform: translateY(-20px);
   }
   50% {
     transform: translateY(0);

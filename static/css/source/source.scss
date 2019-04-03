@@ -20,7 +20,20 @@ Secondary Text: ;
 $primary-color: #3A5E48;
 $primary-text-color: #000;
 $primary-font: 'Ubuntu', sans-serif;
+$secondary-bg-color: #5192C6;
 
+.action-highlight{
+  background-color: green;
+  padding: 10px;
+  border-radius: 25px;
+}
+
+.action-highlight-red{
+  background-color: red;
+  padding: 10px;
+  border-radius: 25px;
+  color: white;
+}
 
 .animate{
    -webkit-animation: color-in-out .5s ; /* Safari 4.0 - 8.0 */
@@ -52,6 +65,10 @@ $primary-font: 'Ubuntu', sans-serif;
   animation-delay: 1.6s;
 }
 
+.border-dashed{
+  border: 5px dashed;
+}
+
 
 .cell-text-container{
   text-align: center;
@@ -63,6 +80,9 @@ $primary-font: 'Ubuntu', sans-serif;
   width: 100%;
 }
 
+.center-text{
+  text-align: center;
+}
 .col-centered{
   float: none;
   margin: 0 auto;
@@ -96,7 +116,8 @@ $primary-font: 'Ubuntu', sans-serif;
 }
 
 .letter{
-  border: 3px solid #000;
+  /*border: 3px solid #000;*/
+  text-align: center;
 }
 
 .lightblue-bg{
@@ -192,6 +213,10 @@ $primary-font: 'Ubuntu', sans-serif;
 	color: #000;
 }
 
+.table-borders{
+  border: 3px solid #000;
+}
+
 .table-config-1{
   table-layout: fixed;
   width: 200px;
@@ -205,6 +230,10 @@ $primary-font: 'Ubuntu', sans-serif;
   margin-bottom: auto;
 }
 
+.secondary-text{
+  color:orange;
+}
+
 .view-single{
   display: none;
   border: 1px solid;
@@ -215,6 +244,11 @@ $primary-font: 'Ubuntu', sans-serif;
 .title-text{
 	font-size: 3em;
   /*animation: bounce 1s infinite;*/
+  float: left;
+}
+
+.title-text-subtext{
+  font-size: 1em;
   float: left;
 }
 
@@ -236,6 +270,9 @@ $primary-font: 'Ubuntu', sans-serif;
   background-color: rgb(255, 255, 255, .5);
   }
 
+.visual-container{
+  width: 100%;
+}
 
 a {
   display: block;
@@ -267,7 +304,9 @@ strong {
 }
 
 td {
-  border-top: 3px solid !important;
+  /*border-top: 3px solid !important;*/
+  background-color: $secondary-bg-color;
+  border-radius: 25px
 }
 
 
@@ -303,7 +342,7 @@ td {
 
   50%{
       /*background-color: lightblue;*/
-      transform: translate(-1px, 2px) rotate(50deg);
+      transform: translate(-1px, 2px) rotate(30deg);
   }
 
   100%{
@@ -333,7 +372,7 @@ td {
 
   @keyframes bounce{
         0%   { transform: translateY(0); }
-        30%  { transform: translateY(-50px); }
+        30%  { transform: translateY(-20px); }
         50%  { transform: translateY(0); }
         100% { transform: translateY(0); }
     }

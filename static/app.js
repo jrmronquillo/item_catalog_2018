@@ -127,6 +127,8 @@ class Main extends React.Component {
     this.sendCommands = this.sendCommands.bind(this);
     this.clearKeyState = this.clearKeyState.bind(this);
     this.keyupAction = this.keyupAction.bind(this);
+    this.resetStates = this.resetStates.bind(this);
+    this.example = this.example.bind(this);
   }
 
   componentDidMount(){
@@ -145,6 +147,16 @@ class Main extends React.Component {
   componentWillUnmount(){
     document.removeEventListener('keypress', this.handleKeyPress);
     document.removeEventListener('keyup', this.keyupAction);
+  }
+
+  example() {
+    return (
+      <Chosen onChange={value => console.log(value)}>
+        <option>vanilla</option>
+        <option>chocolate</option>
+        <option>strawberry</option>
+      </Chosen>
+    );
   }
 
   toggleDisplay(){
@@ -214,6 +226,14 @@ class Main extends React.Component {
     } else{
       console.log('Number of stb labels does not equal 16');
     }
+  }
+
+  resetStates(){
+    console.log('reset states triggered');
+    this.setState({
+      command: '',
+      viewerPosition: '',
+    });
   }
 
   clearKeyState(){
@@ -452,23 +472,24 @@ class Main extends React.Component {
                             '`': 'prev'
                               };
     var viewerPositionMapping = {
-                            '': '0',
-                            '^':'1',
-                            'y':'2',
-                            'h':'3',
-                            'n':'4',
-                            '&':'5',
-                            'u':'6', 
-                            'j':'7',
-                            'm':'8', 
-                            '*':'9',
-                            'i':'10',
-                            'k':'11', 
-                            ',':'12', 
-                            '(':'13', 
-                            'o':'14',
-                            'l':'15',
-                            '.':'16',
+                            '': '-1',
+                            '^':'0',
+                            'y':'1',
+                            'h':'2',
+                            'n':'3',
+                            'u':'4',
+                            'j':'5',
+                            'm':'6', 
+                            'i':'7',
+                            'k':'8', 
+                            ',':'9',
+                            'o':'10',
+                            'l':'11', 
+                            '.':'12', 
+                            '?':'13', 
+                            '?':'14',
+                            '?':'15',
+                            '?':'16',
                             ')':'17',
                             '-':'18',
                             'p':'19',
@@ -617,104 +638,117 @@ class Main extends React.Component {
     
     if(this.state.display){
       return(
-        <div className="row">
+        <div className="container-fluid">
           <header className='header1'>
 
           </header>
           <div className="row">
 
-             <div className="col-lg">
-                <table className="table">
-                  <tbody>
-                  <tr>
-                    <td>
-                      1. Select Device:
-                    </td>
-                    <td>
+             <div className="col-lg-6">
+              <div className="row">
+                <div className="col-sm-6">    
+                    <div className={!this.state.viewerPosition ? "action-highlight center-text": " center-text"}> <span className="secondary-text" onClick={this.resetStates} data-toggle="tooltip" data-placement="top" title="tooltip">1. Select Device:</span></div>   
+                </div>
+                <div className="col-sm-6 center-text">
                       {this.state.viewerPosition}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      2. Select Control Command:
-                    </td>
-                    <td>
+                      {!this.state.viewerPosition && <span>Use keyboard to select device.</span>}
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-sm-6">
+                    <div className={this.state.viewerPosition ? "action-highlight center-text" : " center-text"}>
+                      <span className="secondary-text">2. Select Control Command:</span>
+                    </div>
+                </div>
+                <div className="col-sm-6">
+                    <div className="center-text">
                       {this.state.command} (Key: {this.state.keyPressed})
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              
-            </div>
+                    </div>
+                </div>
+              </div>
+                
+          </div>
+            <div className="col-lg-6">
+              <div className="row">
+                <a href="#" className="btn btn-primary" onClick={this.resetStates}>Reset Demo</a>
+                <a href="#" className="btn btn-secondary">More Info/Help</a>
+              </div>
+              <div className="row border-dashed">
+                <div className={this.state.prevState ? 'col-sm animate animate-delay1 middle': 'col-sm animate2 animate-delay1 middle'}>
+                  <i className="fas fa-laptop two-X"></i>
+                </div>
+                <div className={this.state.prevState ? 'col-sm animate animate-delay2 middle': 'col-sm animate2 animate-delay2 middle'}>
+                  <i className="fas fa-network-wired"></i>
+                </div>
+                <div className={this.state.prevState ? 'col-sm animate animate-delay3 middle': 'col-sm animate2 animate-delay3 middle'}>
+                  <i className="fas fa-server two-X"></i>
 
+                </div>
+                <div className={this.state.prevState ? 'col-sm animate animate-delay4 middle': 'col-sm animate2 animate-delay4 middle'}>
+                  <i className="fas fa-network-wired"></i>
+                </div>
 
-            <div className={this.state.prevState ? 'col-sm animate animate-delay1 middle': 'col-sm animate2 animate-delay1 middle'}>
-              <i className="fas fa-laptop two-X"></i>
-            </div>
-            <div className={this.state.prevState ? 'col-sm animate animate-delay2 middle': 'col-sm animate2 animate-delay2 middle'}>
-              <i className="fas fa-network-wired"></i>
-            </div>
-            <div className={this.state.prevState ? 'col-sm animate animate-delay3 middle': 'col-sm animate2 animate-delay3 middle'}>
-              <i className="fas fa-server two-X"></i>
-
-            </div>
-            <div className={this.state.prevState ? 'col-sm animate animate-delay4 middle': 'col-sm animate2 animate-delay4 middle'}>
-              <i className="fas fa-network-wired"></i>
-            </div>
-
-            <div className='col-sm'>
-              <table className="table">
-                <tbody className="middle">
-                  <tr>
-                    <td className={this.state.viewerPosition !== '1' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
-                      <i className="fas fa-tv"></i>
-                    </td>
-                    <td className={this.state.viewerPosition !== '5' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
-                      <i className="fas fa-tv"></i>
-                    </td>
-                    <td className={this.state.viewerPosition !== '9' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
-                      <i className="fas fa-tv"></i>
-                    </td>
-                    <td className={this.state.viewerPosition !== '13' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
-                      <i className="fas fa-tv"></i>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className={this.state.viewerPosition !== '2' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
-                      <i className="fas fa-tv"></i>
-                    </td>
-                    <td className={this.state.viewerPosition !== '6' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
-                      <i className="fas fa-tv"></i>
-                    </td>
-                    <td className={this.state.viewerPosition !== '10' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
-                      <i className="fas fa-tv"></i>
-                    </td>
-                    <td className={this.state.viewerPosition !== '14' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
-                      <i className="fas fa-tv"></i>
-                    </td>
-                  </tr>
-                   <tr>
-                    <td className={this.state.viewerPosition !== '3' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
-                      <i className="fas fa-tv"></i>
-                    </td>
-                    <td className={this.state.viewerPosition !== '7' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
-                      <i className="fas fa-tv"></i>
-                    </td>
-                    <td className={this.state.viewerPosition !== '11' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
-                      <i className="fas fa-tv"></i>
-                    </td>
-                    <td className={this.state.viewerPosition !== '15' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
-                      <i className="fas fa-tv"></i>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                <div className='col-sm'>
+                  <table className="table">
+                    <tbody className="middle">
+                      <tr>
+                        <td className={this.state.viewerPosition !== '1' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
+                          <i className="fas fa-tv"></i>
+                        </td>
+                        <td className={this.state.viewerPosition !== '4' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
+                          <i className="fas fa-tv"></i>
+                        </td>
+                        <td className={this.state.viewerPosition !== '7' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
+                          <i className="fas fa-tv"></i>
+                        </td>
+                        <td className={this.state.viewerPosition !== '10' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
+                          <i className="fas fa-tv"></i>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className={this.state.viewerPosition !== '2' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
+                          <i className="fas fa-tv"></i>
+                        </td>
+                        <td className={this.state.viewerPosition !== '5' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
+                          <i className="fas fa-tv"></i>
+                        </td>
+                        <td className={this.state.viewerPosition !== '8' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
+                          <i className="fas fa-tv"></i>
+                        </td>
+                        <td className={this.state.viewerPosition !== '11' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
+                          <i className="fas fa-tv"></i>
+                        </td>
+                      </tr>
+                       <tr>
+                        <td className={this.state.viewerPosition !== '3' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
+                          <i className="fas fa-tv"></i>
+                        </td>
+                        <td className={this.state.viewerPosition !== '6' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
+                          <i className="fas fa-tv"></i>
+                        </td>
+                        <td className={this.state.viewerPosition !== '9' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
+                          <i className="fas fa-tv"></i>
+                        </td>
+                        <td className={this.state.viewerPosition !== '12' ? 'col-sm' : this.state.prevState ? 'col-sm lightblue-bg-stay': 'col-sm lightblue-bg-stay-2'}>
+                          <i className="fas fa-tv"></i>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
   
           </div>
           <div className="row">
             <div className="col-md-6">
-                <h1>Controls</h1>{this.state.command && !this.state.viewerPosition && <div> Please Select a Device </div> }
+              <div className="title-text-container">
+                <span className="title-text">Controls</span>
+                <div className="title-text-subtext">
+                  {this.state.command && !this.state.viewerPosition && <div className="action-highlight-red"> Please Select a Device --> </div> }
+                  {this.state.viewerPosition && !this.state.command && <div className="action-highlight title-text-bounce secondary-text"> 2. Select a command </div>  }
+                </div>
+              </div>
               <table className="table table-config-1">
                 <tbody>
                   <tr>
@@ -823,72 +857,71 @@ class Main extends React.Component {
             </div>
             <div className="col-md-6">
               <div className="title-text-container">
-                  <span className="title-text">Device Selector</span>
+                  <a href="#" className="title-text" id='devices' data-toggle="popover" title="Popover title" data-content="body">Devices</a>
                 
                 <div className="title-text-bounce">
-                  {!this.state.viewerPosition && <span className="">Select a Device</span>}
+                  {!this.state.viewerPosition && <span className="action-highlight secondary-text">1. Select a device</span>}
                 </div>
               </div>
                <div className='view-single'>
               </div>
-               <table className="table">
+
+               <table className="table table-config-1">
                 <tbody>
                   <tr>
                     <td className={this.state.viewerPosition == '1' ? 'letter lightblue-bg': 'letter'}>
-                      <h5>STB 1</h5>
+                      <span className="cell-text-container">Device 1</span><br />
 
-                      <span> &#x5e;</span>
-                    </td>
-                    <td className={this.state.viewerPosition == '5' ? 'letter lightblue-bg': 'letter'}>
-                    <h5>STB 5</h5>
-                      <span> &amp;</span>
-
-                    </td>
-                    <td className={this.state.viewerPosition == '9' ? 'letter lightblue-bg': 'letter'}>
-                      <h5>STB 9</h5>
-                      <span>*</span>
-                    </td>
-                    <td className={this.state.viewerPosition == '13' ? 'letter lightblue-bg': 'letter'}>
-                      <h5>STB 13</h5>
-
-                      <span> (</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className={this.state.viewerPosition == '2' ? 'letter lightblue-bg': 'letter'}>
-                      <h5> STB 2 </h5>
                       <span> Y</span>
                     </td>
-                    <td className={this.state.viewerPosition == '6' ? 'letter lightblue-bg': 'letter'}>
-                      <h5>STB 6</h5>
-                      <span>U</span>
+                    <td className={this.state.viewerPosition == '4' ? 'letter lightblue-bg': 'letter'}>
+                    <span className="cell-text-container">Device 4</span><br />
+                      <span> U</span>
+
                     </td>
-                    <td className={this.state.viewerPosition == '10' ? 'letter lightblue-bg': 'letter'}>
-                      <h5>STB 10</h5>
+                    <td className={this.state.viewerPosition == '7' ? 'letter lightblue-bg': 'letter'}>
+                      <span className="cell-text-container">Device 7</span><br />
                       <span>I</span>
                     </td>
-                    <td className={this.state.viewerPosition == '14' ? 'letter lightblue-bg': 'letter'}>
-                      <h5>STB 14</h5>
+                    <td className={this.state.viewerPosition == '10' ? 'letter lightblue-bg': 'letter'}>
+                      <span className="cell-text-container">Device 10</span><br />
                       <span> O</span>
                     </td>
                   </tr>
                   <tr>
-                    <td className={this.state.viewerPosition == '3' ? 'letter lightblue-bg': 'letter'}>
-                      <h5>STB 3</h5>
-                      <span>H</span>
+                    <td className={this.state.viewerPosition == '2' ? 'letter lightblue-bg': 'letter'}>
+                      <span className="cell-text-container"> Device 2 </span> <br />
+                      <span> H</span>
                     </td>
-                    <td className={this.state.viewerPosition == '7' ? 'letter lightblue-bg': 'letter'}>
-                      <h5>STB 7</h5>
-
+                    <td className={this.state.viewerPosition == '5' ? 'letter lightblue-bg': 'letter'}>
+                      <span className="cell-text-container">Device 5</span><br />
                       <span>J</span>
                     </td>
-                    <td className={this.state.viewerPosition == '11' ? 'letter lightblue-bg': 'letter'}>
-                      <h5>STB 11</h5>
+                    <td className={this.state.viewerPosition == '8' ? 'letter lightblue-bg': 'letter'}>
+                      <span className="cell-text-container">Device 8</span><br />
                       <span>K</span>
                     </td>
-                    <td className={this.state.viewerPosition == '15' ? 'letter lightblue-bg': 'letter'}>
-                      <h5>STB 15</h5>
-                      <span>L</span>
+                    <td className={this.state.viewerPosition == '11' ? 'letter lightblue-bg': 'letter'}>
+                      <span className="cell-text-container">Device 11</span><br />
+                      <span> L</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className={this.state.viewerPosition == '3' ? 'letter lightblue-bg': 'letter'}>
+                      <span className="cell-text-container">STB 3</span><br />
+                      <span>N</span>
+                    </td>
+                    <td className={this.state.viewerPosition == '6' ? 'letter lightblue-bg': 'letter'}>
+                      <span className="cell-text-container">Device 6</span><br />
+                      <span>M</span>
+                    </td>
+                    <td className={this.state.viewerPosition == '9' ? 'letter lightblue-bg': 'letter'}>
+                      <span className="cell-text-container">Device 9</span> <br />
+                      <span>,</span>
+                    </td>
+                    <td className={this.state.viewerPosition == '12' ? 'letter lightblue-bg': 'letter'}>
+                      <span className="cell-text-container">Device 12</span><br />
+                      <span>.</span>
                     </td>
                   </tr>
                 </tbody>
