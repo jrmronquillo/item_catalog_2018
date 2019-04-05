@@ -64,8 +64,16 @@ class FlowAnimation extends React.Component{
   render(){
     return(
       <div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Intro:</h5>
+            This tool provides a software tester one interface where the tester can control multiple devices.
+          </div>
+        </div>
 
         <div className="row border-dashed padd-sm">
+          <div className="col-lg-1">
+          </div>
           <div className="col-lg-2 middle">
               <div className={this.state.prevState ? 'col-sm animate animate-delay1 middle': 'col-sm animate2 animate-delay1 middle'}>
                 <i className="fas fa-laptop two-X"></i>
@@ -135,6 +143,8 @@ class FlowAnimation extends React.Component{
               </tbody>
             </table>
           </div>
+          <div className="col-lg-2">
+          </div>
         </div>
       </div>
     )
@@ -156,7 +166,7 @@ class HelpCards extends React.Component{
             <div className="card-header"><i className="fas fa-laptop two-X"></i></div>
             <div className="card-body">
               <h5 className="card-title">User</h5>
-              <p className="card-text">This represents the interface for the user. This is where the user starts. An HTML Front-end provides access and control to multiple devices all from one interface.</p>
+              <p className="card-text">This represents the interface for the user. This is where the user starts. An HTML Front-end provides access and control to multiple devices.</p>
               <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
             </div>
           </div>
