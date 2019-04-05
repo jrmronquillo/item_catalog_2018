@@ -558,7 +558,7 @@ class Main extends React.Component {
         //slot: stbs[viewerPositionMapping[key]].slot
         viewerPosition: viewerPositionMapping[key],
         irnetboxMac: this.state.configs[this.state.chosenConfig][viewerPositionMapping[key]].macAddr,
-      
+        command: '',
         slot: this.state.configs[this.state.chosenConfig][viewerPositionMapping[key]].slot,
         multipleMacs: false,     
         
@@ -642,38 +642,35 @@ class Main extends React.Component {
           <header className='header1'>
 
           </header>
-          <div className="row">
+          <div className="row shadow p-3 mb-3 bg-white rounded">
 
-             <div className="col-lg-6">
-              <div className="row">
-                <div className="col-sm-6">    
-                    <div className={!this.state.viewerPosition ? "action-highlight center-text": " center-text"}> <span className="secondary-text" onClick={this.resetStates} data-toggle="tooltip" data-placement="top" title="tooltip">1. Select Device:</span></div>   
-                </div>
-                <div className="col-sm-6 center-text">
-                      {this.state.viewerPosition}
-                      {!this.state.viewerPosition && <span>Use keyboard to select device.</span>}
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-sm-6">
-                    <div className={this.state.viewerPosition ? "action-highlight center-text" : " center-text"}>
-                      <span className="secondary-text">2. Select Control Command:</span>
-                    </div>
-                </div>
-                <div className="col-sm-6">
-                    <div className="center-text">
-                      {this.state.command} (Key: {this.state.keyPressed})
-                    </div>
-                </div>
-              </div>
+             <div className="col-lg-6 ">
                 
+             <div className="row">
+                <ul className="list-group shadow p-1 mb-3 bg-white rounded">
+                  <ul className="list-group list-group-horizontal">
+                    <li className={!this.state.viewerPosition ? "list-group-item list-group-item-success active": "list-group-item"}>1. Select Device </li>
+                    {!this.state.viewerPosition && <li className="list-group-item active"><i>-use keyboard</i></li>}
+                    {this.state.viewerPosition && <li className="list-group-item">{this.state.viewerPosition}</li>}
+                  </ul>
+                  <ul className="list-group list-group-horizontal">
+                      <li className={this.state.viewerPosition && this.state.command ? "list-group-item" :  this.state.viewerPosition ? "list-group-item active": "list-group-item"}>2. Select Control </li>
+                      { !this.state.viewerPosition && this.state.command ? 
+                          <li className="list-group-item list-group-item-danger"><i>^^Select device^^</i></li> : 
+                        !this.state.viewerPosition ? <li className="list-group-item"><i>-use keyboard</i></li> : 
+                        this.state.viewerPosition && this.state.command ?<li className="list-group-item">{this.state.command}</li> : <li className="list-group-item active"><i>-use keyboard</i></li>
+                      }
+                  </ul>
+                </ul>
+              </div>
+              <div className="row">
+                  <a href="#" className="btn btn-info" >More Info/Help</a>
+                  <a href="#" className="btn btn-warning" onClick={this.resetStates}>Reset Demo</a>
+                </div>
           </div>
             <div className="col-lg-6">
-              <div className="row">
-                <a href="#" className="btn btn-primary" onClick={this.resetStates}>Reset Demo</a>
-                <a href="#" className="btn btn-secondary">More Info/Help</a>
-              </div>
-              <div className="row border-dashed">
+              
+              <div className="row border-dashed padd-sm">
                 <div className={this.state.prevState ? 'col-sm animate animate-delay1 middle': 'col-sm animate2 animate-delay1 middle'}>
                   <i className="fas fa-laptop two-X"></i>
                 </div>
@@ -746,7 +743,7 @@ class Main extends React.Component {
                 <span className="title-text">Controls</span>
                 <div className="title-text-subtext">
                   {this.state.command && !this.state.viewerPosition && <div className="action-highlight-red"> Please Select a Device --> </div> }
-                  {this.state.viewerPosition && !this.state.command && <div className="action-highlight title-text-bounce secondary-text"> 2. Select a command </div>  }
+                  {this.state.viewerPosition && !this.state.command && <div className="action-highlight title-text-bounce secondary-text tooltip-1"> 2. Select a command </div>  }
                 </div>
               </div>
               <table className="table table-config-1">
@@ -856,12 +853,17 @@ class Main extends React.Component {
 
             </div>
             <div className="col-md-6">
+              <div className="tooltip">Hover over
+              <span className="tooltiptext">Tooltip text
+                </span></div>
               <div className="title-text-container">
-                  <a href="#" className="title-text" id='devices' data-toggle="popover" title="Popover title" data-content="body">Devices</a>
+                  <span className="title-text" id="devices">Devices</span>
+
                 
                 <div className="title-text-bounce">
-                  {!this.state.viewerPosition && <span className="action-highlight secondary-text">1. Select a device</span>}
+                  {!this.state.viewerPosition && <span className="action-highlight secondary-text tooltip-1">1. Select a device</span>}
                 </div>
+
               </div>
                <div className='view-single'>
               </div>

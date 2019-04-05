@@ -18,8 +18,20 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <script>
-$(function () {
-  $('[data-toggle="popover"]').popover();
+$(document).ready(function(){
+  $("#devices").ready(function(){
+    $("[data-toggle='popover']").popover('show');
+  });
+
+  $(".btn-warning").click(function(){
+    $("[data-toggle='tooltip']").tooltip('hide');
+  });
+  $("btn").click(function(){
+    $("[data-toggle='tooltip']").tooltip('toggle');
+  });
+  $(".btn-danger").click(function(){
+   $("[data-toggle='tooltip']").tooltip('destroy');
+  });
 });
 </script>
 
@@ -27,7 +39,7 @@ $(function () {
     {% endblock %}
 </head>
 <body>
-    <div class='container-fluid'>
+    <div class='container-fluid bgg-gray'>
         <nav class="primary-bg-color navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
               <a class="navbar-brand text-white" href="http://
               www.jeromeronquillo.com">Home</a>

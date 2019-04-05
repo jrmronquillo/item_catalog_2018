@@ -433,6 +433,10 @@ def deleteItem(category_id, categoryitem_id):
 def controllerDemo():
     return render_template('controller-demo.html')
 
+@app.route('/controller-demo/help/', methods=['GET', 'POST'])
+def controllerDemoHelp():
+    return render_template('controller-demo-help.html')
+
 @app.route('/', methods=['GET', 'POST'])
 def portfolio():
     return render_template('portfolio.html')
