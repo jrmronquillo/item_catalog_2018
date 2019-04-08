@@ -233,6 +233,7 @@ class Main extends React.Component {
     this.setState({
       command: '',
       viewerPosition: '',
+      keyPressed: '',
     });
   }
 
@@ -664,7 +665,7 @@ class Main extends React.Component {
                 </ul>
               </div>
               <div className="row">
-                  <a href="#" className="btn btn-info" >More Info/Help</a>
+                  <a href="/controller-demo/help/" className="btn btn-info" >More Info/Help</a>
                   <a href="#" className="btn btn-warning" onClick={this.resetStates}>Reset Demo</a>
                 </div>
           </div>
