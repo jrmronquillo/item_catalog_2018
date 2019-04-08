@@ -281,7 +281,7 @@ def newCategory():
 
 
 # edit category
-@app.route('/categories/<int:category_id>/edit/', methods=['GET', 'POST'])
+@app.route('/blog/<int:category_id>/edit/', methods=['GET', 'POST'])
 # @login_required
 @category_exists
 @user_created_category
@@ -313,8 +313,8 @@ def editCategory(category_id):
 #        return render_template(
 #            'editCategory.html', category=editedCategory)
 
-# delete category
-@app.route('/categories/<int:category_id>/delete/', methods=['GET', 'POST'])
+# delete blog post
+@app.route('/blog/<int:category_id>/delete/', methods=['GET', 'POST'])
 # @login_required
 @category_exists
 @user_created_category
