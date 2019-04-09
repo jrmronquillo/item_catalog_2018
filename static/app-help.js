@@ -34,7 +34,6 @@ class Main extends React.Component {
     if(this.state.display){
       return(
         <div className="container-fluid spacer-navbar">
-          <Title />
           <FlowAnimation />
           <HelpCards />
         </div>
@@ -46,7 +45,7 @@ class Title extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      name: 'Help Cards',
+      name: 'About',
     };
   }
   render(){
@@ -64,17 +63,46 @@ class FlowAnimation extends React.Component{
   render(){
     return(
       <div>
+
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Intro:</h5>
-            This tool provides a software tester one interface where the tester can control multiple devices.
+            <h4 class="card-title"><Title /></h4>
+            This tool provides a software tester a single interface where the tester can control multiple devices individually or in parallel.
+            <br />
+            <br />
             <div>
-              This was one of the first web apps I worked on that went through many iterations to get to where it is today.
+              <p>
+                <button class="btn btn-primary button-outline-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                  Additional info
+                </button>
+              </p>
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                  <h4 class="card-title"> Additional Info:</h4> 
+                  <ul>
+                    <li>
+                      This was one of the first web apps I developed.
+                    </li>
+                    <li> 
+                      Designed to assist with  software tester's problem of increasing number device hardware and software builds with limited testing time.
+                    </li>
+                    <li>
+                      <span className="text-standout"> Goal</span>- Eliminate time lost from task switching; identify software bugs faster, establish consistency across all products, communicate device specific information to developers quickly.
+                    </li>
+                    <li>
+                      <span className="text-standout">Solution</span> - Provide relevant information to the software tester at a glance -  all device displays, device model information and control group reference.
+                    </li>
+                  </ul> 
+                  <p class="card-text"><small class="text-muted">Features not shown in this demo - Backend Implementation and Integration (Python), Multiviewer control, Test Script Automation Control </small></p>
+              </div>
+                </div>
+              </div>
+              
+             
             </div>
-          </div>
         </div>
 
-        <div className="row border-dashed padd-sm bg-white">
+        <div id="card-animation" className="row border-dashed padd-sm bg-white">
           <div className="col-lg-1">
           </div>
           <div className="col-lg-2 middle">
@@ -180,24 +208,36 @@ class HelpCards extends React.Component{
               <p className="card-text">
                 This represents the backend infrastructure built to support the Front-end. The Front-end makes calls to this backend. The backend server translates the user input to controls for the selected devices. See below for the sample API call, when a user interacts with the Front-end.
               </p>
-              <h5> Sample API Call: </h5>
-              <code>
-                  http://ipAddress/command/00-00-00-00-00-00/1/rightArrow
-              </code> <br /> <br />
-              <h5> Server - Sample Python Code </h5>
-              <div className="align-just">
-                <code>
-                  <pre>
-                  def command(deviceMac, deviceNumber, commandName): <br/>
-                   &nbsp; MESSAGE = 'MAC="' + deviceMac + number="' <br/> 
-                   &nbsp; + deviceNumber + '" output="' + commandName + '" \n'<br />
-                   &nbsp; p = socket.socket(socket.AF_INET, socket.SOCK_STREAM) <br />
-                   &nbsp; p.connect((TCP_IP, TCP_PORT)) <br />
-                  &nbsp; p.send(MESSAGE) <br />
-                  &nbsp; p.close() <br />
-                  </pre>
-                </code>
+
+              <p>
+                <button class="btn btn-primary button-outline-success" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapseExample">
+                  Code Snippets
+                </button>
+              </p>
+              <div class="collapse" id="collapse2">
+                <div class="card card-body">
+                  <h5> Sample API Call: </h5>
+                  <code>
+                    http://ipAddress/command/00-00-00-00-00-00/1/rightArrow
+                  </code> <br /> <br />
+                  <h5> Server - Sample Python Code </h5>
+                  <div className="align-just">
+                    <code>
+                      <pre>
+                      def command(deviceMac, deviceNumber, commandName): <br/>
+                       &nbsp; MESSAGE = 'MAC="' + deviceMac + number="' <br/> 
+                       &nbsp; + deviceNumber + '" output="' + commandName + '" \n'<br />
+                       &nbsp; p = socket.socket(socket.AF_INET, socket.SOCK_STREAM) <br />
+                       &nbsp; p.connect((TCP_IP, TCP_PORT)) <br />
+                      &nbsp; p.send(MESSAGE) <br />
+                      &nbsp; p.close() <br />
+                      </pre>
+                    </code>
+                  </div>
+                </div>
               </div>
+              
+              
             </div>
           </div>
           <div className="card">
