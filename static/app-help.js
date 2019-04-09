@@ -72,7 +72,7 @@ class FlowAnimation extends React.Component{
             <br />
             <div>
               <p>
-                <button class="btn btn-primary button-outline-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                   Additional info
                 </button>
               </p>
@@ -210,7 +210,7 @@ class HelpCards extends React.Component{
               </p>
 
               <p>
-                <button class="btn btn-primary button-outline-success" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapseExample">
+                <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapseExample">
                   Code Snippets
                 </button>
               </p>
