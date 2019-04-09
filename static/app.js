@@ -2,6 +2,41 @@
 
 const e = React.createElement;
 
+class MobileDeviceSelection extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    };
+  }
+  render() {
+    return(
+        <div>
+          <div className="input-group mb-3">
+            <div className="input-group-prepend">
+              <label className="input-group-text" for="inputGroupSelect01">Devices</label>
+            </div>
+            <select className="custom-select" id="inputGroupSelect01" onChange={this.props.handleChange}>
+              <option value="">Choose...</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+              <option value="4">Four</option>
+              <option value="5">Five</option>
+              <option value="6">Six</option>
+              <option value="7">Seven</option>
+              <option value="8">Eight</option>
+              <option value="9">Nine</option>
+              <option value="10">Ten</option>
+              <option value="11">Eleven</option>
+              <option value="12">Twelve</option>
+            </select>
+          </div>
+        </div>
+      )}
+  }
+
+
 class Main extends React.Component {
   constructor(props) {
     super(props);
@@ -29,99 +64,8 @@ class Main extends React.Component {
       chosenConfig: 'multiviewerConfig1',
       multipleMacs: false,
       macsInConfig: [],
-      configs: {
-      'multiviewerConfig1': {
-                           '1': {macAddr: '00-80-A3-A9-E3-7A', slot: '1', model: 'H44-100', vidRouteMoniker:'r3s1'}, 
-                           '2': {macAddr: '00-80-A3-A9-E3-7A', slot: '2', model: 'HR54-700', vidRouteMoniker:'r3s2'},
-                           '3': {macAddr: '00-80-A3-A9-E3-7A', slot: '3', model: 'HR54-500', vidRouteMoniker: 'r3s3'},
-                           '4': {macAddr: '00-80-A3-A9-E3-7A', slot: '4', model: 'HR54-200', vidRouteMoniker: 'r3s4'},
-                           '5': {macAddr: '00-80-A3-A9-E3-7A', slot: '5', model: 'HR44-700', vidRouteMoniker: 'r3s5'},
-                           '6': {macAddr: '00-80-A3-A9-E3-7A', slot: '6', model: 'HR44-500', vidRouteMoniker: 'r3s6'},
-                           '7': {macAddr: '00-80-A3-A9-E3-7A', slot: '7', model: 'HR44-200', vidRouteMoniker: 'r3s7'},
-                           '8': {macAddr: '00-80-A3-A9-E3-7A', slot: '8', model: 'HR34-700', vidRouteMoniker: 'r3s8'},
-                           '9': {macAddr: '00-80-A3-A9-E3-6A', slot: '1', model: 'C51-100(H44-500)', vidRouteMoniker: 'r2s1'},
-                           '10': {macAddr: '00-80-A3-A9-E3-6A', slot: '2', model: 'C41-700(H44-500)', vidRouteMoniker: 'r2s2'},
-                           '11': {macAddr: '00-80-A3-A9-E3-6A', slot: '3', model: 'C41-700(H44-500)', vidRouteMoniker: 'r2s3'},
-                           '12': {macAddr: '00-80-A3-A9-E3-6A', slot: '4', model: 'C51-500(HR54R1-700)', vidRouteMoniker: 'r2s4'},
-                           '13': {macAddr: '00-80-A3-A9-E3-6A', slot: '5', model: 'C61-700(HR54R1-700)', vidRouteMoniker: 'r2s5'},
-                           '14': {macAddr: '00-80-A3-A9-E3-6A', slot: '6', model: 'C61w-700(HR54R1-700)', vidRouteMoniker: 'r2s6'},
-                           '15': {macAddr: '00-80-A3-A9-E3-6A', slot: '7', model: 'C51-500(HR54-500)', vidRouteMoniker: 'r2s7'},
-                           '16': {macAddr: '00-80-A3-A9-E3-6A', slot: '8', model: 'C41-700(HR54-200)', vidRouteMoniker: 'r2s8'},
-                         },
-      'multiviewerConfig2': {
-                           '1': {macAddr: '00-80-A3-9D-86-D0', slot: '1', model: 'H24-100', vidRouteMoniker:'r13s1'}, 
-                           '2': {macAddr: '00-80-A3-9D-86-D0', slot: '2', model: 'H24-200', vidRouteMoniker:'r13s2'},
-                           '3': {macAddr: '00-80-A3-9D-86-D0', slot: '3', model: 'H24-700', vidRouteMoniker: 'r13s3'},
-                           '4': {macAddr: '00-80-A3-9D-86-D0', slot: '4', model: 'H25-100', vidRouteMoniker: 'r13s4'},
-                           '5': {macAddr: '00-80-A3-9D-86-D0', slot: '5', model: 'HR24-100', vidRouteMoniker: 'r13s5'},
-                           '6': {macAddr: '00-80-A3-9D-86-D0', slot: '6', model: 'H25-700', vidRouteMoniker: 'r13s6'},
-                           '7': {macAddr: '00-80-A3-9D-86-D0', slot: '7', model: 'H25-500', vidRouteMoniker: 'r13s7'},
-                           '8': {macAddr: '00-80-A3-9D-86-D0', slot: '8', model: 'HR24-200', vidRouteMoniker: 'r13s8'},
-                           '9': {macAddr: '00-80-A3-9D-86-D1', slot: '1', model: 'H21-100', vidRouteMoniker: 'r14s1'},
-                           '10': {macAddr: '00-80-A3-9D-86-D1', slot: '2', model: 'H21-200', vidRouteMoniker: 'r14s2'},
-                           '11': {macAddr: '00-80-A3-9D-86-D1', slot: '3', model: 'H23-600', vidRouteMoniker: 'r14s3'},
-                           '12': {macAddr: '00-80-A3-9D-86-D1', slot: '4', model: 'HR20-100', vidRouteMoniker: 'r14s4'},
-                           '13': {macAddr: '00-80-A3-9D-86-D1', slot: '5', model: 'HR20-700', vidRouteMoniker: 'r14s5'},
-                           '14': {macAddr: '00-80-A3-9D-86-D1', slot: '6', model: 'HR21-100', vidRouteMoniker: 'r14s6'},
-                           '15': {macAddr: '00-80-A3-9D-86-D1', slot: '7', model: 'HR22-100', vidRouteMoniker: 'r14s7'},
-                           '16': {macAddr: '00-80-A3-9D-86-D1', slot: '8', model: 'HR24-500', vidRouteMoniker: 'r14s8'},
-                         },
-      'multiviewerConfig3': {
-                           '1': {macAddr: '00-80-A3-9D-86-D1', slot: '1', model: 'H21-100', vidRouteMoniker: 'r14s1'},
-                           '2': {macAddr: '00-80-A3-9D-86-D1', slot: '2', model: 'H21-200', vidRouteMoniker: 'r14s2'},
-                           '3': {macAddr: '00-80-A3-9D-86-D1', slot: '3', model: 'H23-600', vidRouteMoniker: 'r14s3'},
-                           '4': {macAddr: '00-80-A3-9D-86-D1', slot: '4', model: 'HR20-100', vidRouteMoniker: 'r14s4'},
-                           '5': {macAddr: '00-80-A3-9D-86-D1', slot: '5', model: 'HR20-700', vidRouteMoniker: 'r14s5'},
-                           '6': {macAddr: '00-80-A3-9D-86-D1', slot: '6', model: 'HR21-100', vidRouteMoniker: 'r14s6'},
-                           '7': {macAddr: '00-80-A3-9D-86-D1', slot: '7', model: 'HR22-100', vidRouteMoniker: 'r14s7'},
-                           '8': {macAddr: '00-80-A3-9D-86-D1', slot: '8', model: 'HR24-500', vidRouteMoniker: 'r14s8'},
-                           '9': {macAddr: '00-80-A3-9D-86-D3', slot: '1', model: 'THR22-100', vidRouteMoniker: 'r15s1'},
-                           '10': {macAddr: '00-80-A3-9D-86-D3', slot: '2', model: 'HR21-200', vidRouteMoniker: 'r15s2'},
-                           '11': {macAddr: '00-80-A3-9D-86-D3', slot: '3', model: 'HR21P-200', vidRouteMoniker: 'r15s3'},
-                           '12': {macAddr: '00-80-A3-9D-86-D3', slot: '4', model: 'R22-100', vidRouteMoniker: 'r15s4'},
-                           '13': {macAddr: '00-80-A3-9D-86-D3', slot: '5', model: 'HR24-200', vidRouteMoniker: 'r15s5'},
-                           '14': {macAddr: '00-80-A3-9D-86-D3', slot: '6', model: 'HR21-700', vidRouteMoniker: 'r15s6'},
-                           '15': {macAddr: '00-80-A3-9D-86-D3', slot: '7', model: 'HR23-700', vidRouteMoniker: 'r15s7'},
-                           '16': {macAddr: '00-80-A3-9D-86-D3', slot: '8', model: 'HR24-500', vidRouteMoniker: 'r15s8'},
-                         },
-      'multiviewerConfig4': {
-                           '1': {macAddr: '00-80-A3-9E-67-3A', slot: '1', model: 'HS171', vidRouteMoniker:'r13s1'}, 
-                           '2': {macAddr: '00-80-A3-9E-67-3A', slot: '2', model: 'HS172', vidRouteMoniker:'r13s2'},
-                           '3': {macAddr: '00-80-A3-9E-67-3A', slot: '3', model: 'HS173', vidRouteMoniker: 'r13s3'},
-                           '4': {macAddr: '00-80-A3-9E-67-3A', slot: '4', model: 'HS174', vidRouteMoniker: 'r13s4'},
-                           '5': {macAddr: '00-80-A3-9E-67-3A', slot: '5', model: 'HS175', vidRouteMoniker: 'r13s5'},
-                           '6': {macAddr: '00-80-A3-9E-67-3A', slot: '6', model: 'HS176', vidRouteMoniker: 'r13s6'},
-                           '7': {macAddr: '00-80-A3-9E-67-3A', slot: '7', model: 'HS177', vidRouteMoniker: 'r13s7'},
-                           '8': {macAddr: '00-80-A3-9E-67-3A', slot: '8', model: 'HS178', vidRouteMoniker: 'r13s8'},
-                           '9': {macAddr: '00-80-A3-A9-E3-6A', slot: '1', model: '#', vidRouteMoniker: 'r14s1'},
-                           '10': {macAddr: '00-80-A3-A9-E3-6A', slot: '2', model: '#', vidRouteMoniker: 'r14s2'},
-                           '11': {macAddr: '00-80-A3-A9-E3-6A', slot: '3', model: '#', vidRouteMoniker: 'r14s3'},
-                           '12': {macAddr: '00-80-A3-A9-E3-6A', slot: '4', model: '#', vidRouteMoniker: 'r14s4'},
-                           '13': {macAddr: '00-80-A3-A9-E3-6A', slot: '5', model: '#', vidRouteMoniker: 'r14s5'},
-                           '14': {macAddr: '00-80-A3-A9-E3-6A', slot: '6', model: '#', vidRouteMoniker: 'r14s6'},
-                           '15': {macAddr: '00-80-A3-A9-E3-6A', slot: '7', model: '#', vidRouteMoniker: 'r14s7'},
-                           '16': {macAddr: '00-80-A3-A9-E3-6A', slot: '8', model: '#', vidRouteMoniker: 'r14s8'},
-                         },
-      'multiviewerConfig5': {
-                           '1': {macAddr: '00-80-A3-9D-86-D3', slot: '1', model: '#', vidRouteMoniker:'r13s1'}, 
-                           '2': {macAddr: '00-80-A3-9D-86-D3', slot: '2', model: '#', vidRouteMoniker:'r13s2'},
-                           '3': {macAddr: '00-80-A3-9D-86-D3', slot: '3', model: '#', vidRouteMoniker: 'r13s3'},
-                           '4': {macAddr: '00-80-A3-9D-86-D3', slot: '4', model: '#', vidRouteMoniker: 'r13s4'},
-                           '5': {macAddr: '00-80-A3-9D-86-D3', slot: '5', model: '#', vidRouteMoniker: 'r13s5'},
-                           '6': {macAddr: '00-80-A3-9D-86-D3', slot: '6', model: '#', vidRouteMoniker: 'r13s6'},
-                           '7': {macAddr: '00-80-A3-9D-86-D3', slot: '7', model: '#', vidRouteMoniker: 'r13s7'},
-                           '8': {macAddr: '00-80-A3-9D-86-D3', slot: '8', model: '#', vidRouteMoniker: 'r13s8'},
-                           '9': {macAddr: '00-80-A3-9D-86-D3', slot: '1', model: '#', vidRouteMoniker: 'r14s1'},
-                           '10': {macAddr: '00-80-A3-9D-86-D3', slot: '2', model: '#', vidRouteMoniker: 'r14s2'},
-                           '11': {macAddr: '00-80-A3-9D-86-D3', slot: '3', model: '#', vidRouteMoniker: 'r14s3'},
-                           '12': {macAddr: '00-80-A3-9D-86-D3', slot: '4', model: '#', vidRouteMoniker: 'r14s4'},
-                           '13': {macAddr: '00-80-A3-9D-86-D3', slot: '5', model: '#', vidRouteMoniker: 'r14s5'},
-                           '14': {macAddr: '00-80-A3-9D-86-D3', slot: '6', model: '#', vidRouteMoniker: 'r14s6'},
-                           '15': {macAddr: '00-80-A3-9D-86-D3', slot: '7', model: '#', vidRouteMoniker: 'r14s7'},
-                           '16': {macAddr: '00-80-A3-9D-86-D3', slot: '8', model: '#', vidRouteMoniker: 'r14s8'},
-                         }
-        },
-    };
+      configs: '',
+    }
     this.toggleDisplay = this.toggleDisplay.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.sendCommands = this.sendCommands.bind(this);
@@ -129,6 +73,8 @@ class Main extends React.Component {
     this.keyupAction = this.keyupAction.bind(this);
     this.resetStates = this.resetStates.bind(this);
     this.example = this.example.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleControlClick = this.handleControlClick.bind(this);
   }
 
   componentDidMount(){
@@ -259,6 +205,30 @@ class Main extends React.Component {
     console.log(this.state.viewerPosition);
     console.log('keyPressed:');
     console.log(this.state.keyPressed);
+  }
+
+  handleChange(event){
+    console.log('handleChange executed!');
+    console.log(event.target.value);
+    const valStr = String(event.target.value);
+    this.setState({
+      viewerPosition: valStr,
+    });
+    this.sendCommands();
+  }
+
+  handleControlClick(event){
+    console.log('handleControlClick Trigggered!')
+    console.log(event.target.id);
+    console.log(event.target.getAttribute('data-txt'));
+    this.setState({
+      keyPressed: event.target.id,
+      command: event.target.getAttribute('data-txt'),
+    })
+
+    console.log('viewerPosition')
+    console.log(this.state.viewerPosition);
+    //event.preventDefault();
   }
 
   handleKeyPress(event){
@@ -543,7 +513,6 @@ class Main extends React.Component {
     console.log('viewerPositionMapping[key]');
     console.log(viewerPositionMapping[key]);
     console.log('viewerPositionMapping[key]:');
-    console.log(this.state.configs[this.state.chosenConfig][1].macAddr);
     // check if selection is for one slot or for all slots 1-16
     if(viewerPositionMapping[key] == '1-16'){
       this.setState({
@@ -558,13 +527,12 @@ class Main extends React.Component {
         //irnetboxMac: stbs[viewerPositionMapping[key]].macAddr,
         //slot: stbs[viewerPositionMapping[key]].slot
         viewerPosition: viewerPositionMapping[key],
-        irnetboxMac: this.state.configs[this.state.chosenConfig][viewerPositionMapping[key]].macAddr,
         command: '',
-        slot: this.state.configs[this.state.chosenConfig][viewerPositionMapping[key]].slot,
         multipleMacs: false,     
         
       });
-
+      console.log('viewerPosition');
+      console.log(this.state.viewerPosition);
     } else {
       console.log('viewerPostionMapping[key] not detected');
     }
@@ -639,7 +607,7 @@ class Main extends React.Component {
     
     if(this.state.display){
       return(
-        <div className="container-fluid">
+        <div className="h-100 container-fluid">
           <header className='header1'>
 
           </header>
@@ -671,7 +639,7 @@ class Main extends React.Component {
           </div>
             <div className="col-lg-6">
               
-              <div className="row border-dashed padd-sm">
+              <div id="card-animation" className="row border-dashed padd-sm">
                 <div className={this.state.prevState ? 'col-sm animate animate-delay1 middle': 'col-sm animate2 animate-delay1 middle'}>
                   <i className="fas fa-laptop two-X"></i>
                 </div>
@@ -740,6 +708,9 @@ class Main extends React.Component {
           </div>
           <div className="row">
             <div className="col-md-6">
+              <div className="deviceSelect-mobile">
+                < MobileDeviceSelection handleChange={this.handleChange}/>
+              </div>
               <div className="title-text-container">
                 <span className="title-text">Controls</span>
                 <div className="title-text-subtext">
@@ -751,31 +722,31 @@ class Main extends React.Component {
                 <tbody>
                   <tr>
                     <td className={this.state.keyPressed =='q'? 'letter lightblue-bg': 'letter'}>
-                      <div className="cell-text-container">
+                      <div id="q" data-txt="guide" onClick={this.handleControlClick} className="cell-text-container">
                         <span className="cell-text">GUIDE</span><br />
                         <span> Q</span>
                       </div>
                     </td>
                     <td className={this.state.keyPressed =='w'? 'letter lightblue-bg': 'letter'}>
-                      <div className="cell-text-container">  
+                      <div id="w" data-txt="upArrow" onClick={this.handleControlClick} className="cell-text-container">  
                         <span className="cell-text">&uarr;</span><br />
                       <span > W </span>
                       </div>
                     </td>
                     <td className={this.state.keyPressed =='e'? 'letter lightblue-bg': 'letter'}>
-                      <div className="cell-text-container">
+                      <div id="e" data-txt="menu" onClick={this.handleControlClick} className="cell-text-container">
                         <span className="cell-text">MENU</span><br />
                         <span> E </span>
                       </div>
                     </td>
                     <td className={this.state.keyPressed =='r'? 'letter lightblue-bg': 'letter'}>
-                      <div className="cell-text-container">
+                      <div id="r" data-txt="red" onClick={this.handleControlClick} className="cell-text-container">
                         <span className="cell-text">RED</span><br />
                         <span > R </span>
                       </div>
                     </td>
                      <td className={this.state.keyPressed =='t'? 'letter lightblue-bg': 'letter'}>
-                        <div className="cell-text-container">
+                        <div id="t" data-txt="chanup" onClick={this.handleControlClick} className="cell-text-container">
                           <span className="cell-text">&#9650;</span><br />
                           <span > T </span>
                         </div>
@@ -783,31 +754,31 @@ class Main extends React.Component {
                   </tr>
                   <tr>
                     <td className={this.state.keyPressed =='a'? 'letter lightblue-bg': 'letter'}>
-                      <div className="cell-text-container">
+                      <div id="a" data-txt="leftArrow" onClick={this.handleControlClick} className="cell-text-container">
                         <span className="cell-text">&larr;</span><br />
                         <span> A</span>
                       </div>
                     </td>
                     <td className={this.state.keyPressed =='s'? 'letter lightblue-bg': 'letter'}>
-                      <div className="cell-text-container">  
+                      <div id="s" data-txt="downArrow" onClick={this.handleControlClick} className="cell-text-container">  
                         <span className="cell-text">&darr;</span><br />
                       <span > S </span>
                       </div>
                     </td>
                     <td className={this.state.keyPressed =='d'? 'letter lightblue-bg': 'letter'}>
-                      <div className="cell-text-container">
+                      <div id="d" data-txt="rightArrow" onClick={this.handleControlClick} className="cell-text-container">
                         <span className="cell-text">&rarr;</span><br />
                         <span> D </span>
                       </div>
                     </td>
                     <td className={this.state.keyPressed =='f'? 'letter lightblue-bg': 'letter'}>
-                      <div className="cell-text-container">
+                      <div id="f" data-txt="info" onClick={this.handleControlClick} className="cell-text-container">
                         <span className="cell-text">INFO</span><br />
                         <span > F </span>
                       </div>
                     </td>
                      <td className={this.state.keyPressed =='g'? 'letter lightblue-bg': 'letter'}>
-                        <div className="cell-text-container">
+                        <div id="g" data-txt="chandown" onClick={this.handleControlClick} className="cell-text-container">
                           <span className="cell-text">&#9660;</span><br />
                           <span > G </span>
                         </div>
@@ -815,31 +786,31 @@ class Main extends React.Component {
                   </tr>
                   <tr>
                     <td className={this.state.keyPressed =='z'? 'letter lightblue-bg': 'letter'}>
-                      <div className="cell-text-container">
+                      <div id="z" data-txt="dash" onClick={this.handleControlClick} className="cell-text-container">
                         <span className="cell-text">DASH</span><br />
                         <span>Z</span>
                       </div>
                     </td>
                     <td className={this.state.keyPressed =='x'? 'letter lightblue-bg': 'letter'}>
-                      <div className="cell-text-container">
+                      <div id="x" data-txt="exit" onClick={this.handleControlClick} className="cell-text-container">
                         <span className="cell-text">EXIT</span><br />
                         <span>X</span>
                       </div>
                     </td>
                     <td className={this.state.keyPressed =='c'? 'letter lightblue-bg': 'letter'}>
-                      <div className="cell-text-container">
+                      <div id="c" data-txt="rewind" onClick={this.handleControlClick} className="cell-text-container">
                         <span className="cell-text">REW</span><br />
                         <span>C</span>
                       </div>
                     </td>
                     <td className={this.state.keyPressed =='v'? 'letter lightblue-bg': 'letter'}>
-                      <div className="cell-text-container">
+                      <div id="v" data-txt="play" onClick={this.handleControlClick} className="cell-text-container">
                         <span className="cell-text">PLAY</span><br />
                         <span>V</span>
                       </div>
                     </td>
                      <td className={this.state.keyPressed =='b'? 'letter lightblue-bg': 'letter'}>
-                      <div className="cell-text-container">
+                      <div id="b" data-txt="fastForward" onClick={this.handleControlClick} className="cell-text-container">
                         <span className="cell-text">FFWD</span><br />
                         <span>B</span>
                       </div>
@@ -847,13 +818,9 @@ class Main extends React.Component {
                   </tr>
                 </tbody>
               </table>
-
-
-
-              
-
             </div>
-            <div className="col-md-6">
+
+            <div className="col-md-6 controls">
               <div className="tooltip">Hover over
               <span className="tooltiptext">Tooltip text
                 </span></div>

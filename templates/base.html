@@ -39,7 +39,7 @@ $(document).ready(function(){
     {% endblock %}
 </head>
 <body>
-    <div class='container-fluid bgg-gray'>
+    <div class='h-100 container-fluid bgg-gray'>
         <nav class="primary-bg-color navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
               <a class="navbar-brand text-white" href="http://www.jeromeronquillo.com">Home</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,9 +69,11 @@ $(document).ready(function(){
         <div class='row no-gutters content-main'>
             <div id="content" align='left'>{% block content %}{% endblock %}</div>
         </div>
+
         <div id="footer" class="text-muted">
             {% block footer %}
             &copy; Jerome Ronquillo
+            <div class="ad-footer"></div>
             {% endblock %}
         </div>
     </div>
