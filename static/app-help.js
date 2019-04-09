@@ -36,8 +36,20 @@ class Main extends React.Component {
         <div className="container-fluid spacer-navbar">
           <FlowAnimation />
           <HelpCards />
+          <Pagination />
         </div>
     )}
+  }
+}
+
+class Pagination extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+    };
+  }
+  render(){
+    return(<a href="/controller-demo" className="btn btn-warning"> &laquo; Demo </a>);
   }
 }
 
