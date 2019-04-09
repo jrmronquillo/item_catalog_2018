@@ -69,7 +69,7 @@ class FlowAnimation extends React.Component{
             <h5 class="card-title">Intro:</h5>
             This tool provides a software tester one interface where the tester can control multiple devices.
             <div>
-              This was one of the first web apps I worked 
+              This was one of the first web apps I worked on that went through many iterations to get to where it is today.
             </div>
           </div>
         </div>
@@ -178,13 +178,13 @@ class HelpCards extends React.Component{
             <div className="card-body">
               <h5 className="card-title">Server (Backend)</h5> 
               <p className="card-text">
-                This represents the backend infrastructure built to support the Front-end. The Front-end makes calls to this backend. The backend server is connected to all the devices. See below for the sample API call, when a user interacts with the Front-end.
+                This represents the backend infrastructure built to support the Front-end. The Front-end makes calls to this backend. The backend server translates the user input to controls for the selected devices. See below for the sample API call, when a user interacts with the Front-end.
               </p>
               <h5> Sample API Call: </h5>
               <code>
                   http://ipAddress/command/00-00-00-00-00-00/1/rightArrow
               </code> <br /> <br />
-              <h5> Sample Server Python </h5>
+              <h5> Server - Sample Python Code </h5>
               <div className="align-just">
                 <code>
                   <pre>
@@ -204,7 +204,7 @@ class HelpCards extends React.Component{
             <div className="card-header"><i className="fas fa-tv two-X"></i></div>
             <div className="card-body">
               <h5 className="card-title">Device</h5>
-              <p className="card-text">This represents an individual device. The tool was intended to be paired with a Multiviewer - where the tester can view the displays of mu</p>
+              <p className="card-text">This represents an individual device. The demo animation above shows a group of devices because the tool was intended to be paired with a Multiviewer - where the tester can view the displays of multiple devices on one display.</p>
             </div>
       </div>
 </div>
