@@ -206,7 +206,7 @@ class HelpCards extends React.Component{
             <div className="card-body">
               <h5 className="card-title">Server (Backend)</h5> 
               <p className="card-text">
-                This represents the backend infrastructure built to support the Front-end. The Front-end makes calls to this backend. The backend server translates the user input to controls for the selected devices. See below for the sample API call, when a user interacts with the Front-end.
+                This represents the backend infrastructure built to support the Front-end. The Front-end makes calls to this backend. The backend server translates the user input to contol commands for the selected devices. See below for the sample API call, when a user interacts with the Front-end.
               </p>
 
               <p>
