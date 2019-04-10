@@ -14,7 +14,7 @@ class MobileDeviceSelection extends React.Component {
         <div>
           <div className="input-group mb-3">
             <div className="input-group-prepend">
-              <label className="input-group-text" for="inputGroupSelect01">Devices</label>
+              <label className="input-group-text" for="inputGroupSelect01">Device</label>
             </div>
             <select className="custom-select" id="inputGroupSelect01" onChange={this.props.handleChange}>
               <option value="">Choose...</option>
