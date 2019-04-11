@@ -24,7 +24,7 @@ Secondary Text: ;
   display: block;
   width: 100%;
   height: 800px;
-  background-image: url("../images/header.png");
+  background-image: url("../images/header.jpg");
 }
 
 .tooltip-1 {
@@ -133,7 +133,7 @@ Secondary Text: ;
 .header1 {
   width: 100%;
   height: 150px;
-  background-image: url("../images/header.png");
+  background-image: url("../images/header.jpg");
 }
 
 .header-image {
@@ -422,7 +422,7 @@ td {
   .header1 {
     width: 100%;
     height: 100px;
-    background-image: url("../images/header.png");
+    background-image: url("../images/header.jpg");
   }
 
   .title-text {
