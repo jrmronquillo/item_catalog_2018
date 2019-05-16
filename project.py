@@ -437,6 +437,10 @@ def controllerDemo():
 def controllerDemoHelp():
     return render_template('controller-demo-help.html')
 
+@app.route('/shmesla', methods=['GET'])
+def shmesla():
+    return render_template('shmesla-demo.html')
+
 @app.route('/', methods=['GET', 'POST'])
 def portfolio():
     return render_template('portfolio.html')

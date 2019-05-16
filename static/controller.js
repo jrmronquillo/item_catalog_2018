@@ -842,7 +842,7 @@ class Main extends React.Component {
                     <td className={this.state.viewerPosition == '1' ? 'letter lightblue-bg': 'letter'}>
                       <span className="cell-text-container">Device 1</span><br />
 
-                      <span> Y</span>
+                      <span> ^</span>
                     </td>
                     <td className={this.state.viewerPosition == '4' ? 'letter lightblue-bg': 'letter'}>
                     <span className="cell-text-container">Device 4</span><br />

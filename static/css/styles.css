@@ -374,14 +374,14 @@ Secondary Text: ;
 a {
   display: block;
   padding: 8px;
-  background-color: #3A5E48;
+  /*background-color: #3A5E48;*/
   color: #FFF;
 }
 
 a:hover {
   display: block;
   padding: 8px;
-  background-color: #3A5E48;
+  /*background-color: #3A5E48;*/
 }
 
 html, body {
