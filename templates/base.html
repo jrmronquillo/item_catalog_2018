@@ -21,6 +21,7 @@
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/shmesla.css') }}">
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/styles.css') }}">
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='controller-styles.css') }}">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/home.css') }}">
 
 <script>
 $(document).ready(function(){
@@ -45,6 +46,7 @@ $(document).ready(function(){
 </head>
 <body>
     <div class='h-100 container-fluid bgg-gray'>
+      {% if request.path != url_for('home') %}
         <nav class="primary-bg-color navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
               <a class="navbar-brand text-white" href="http://www.jeromeronquillo.com">Home</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,7 +72,7 @@ $(document).ready(function(){
                 </form>
               </div>
             </nav>
-
+        {% endif %}
         <div class='row no-gutters content-main'>
             <div id="content" align='left'>{% block content %}{% endblock %}</div>
         </div>

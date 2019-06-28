@@ -262,6 +262,37 @@ Secondary Text: ;
   -ms-animation: fade-in 0.3s linear 1, move-up 0.3s linear 1;
 }
 
+.sections {
+  /* The image used */
+    /*background-image: url('./landscape_placeholder.jpg');*/
+    background-color: white;
+
+    /* Full height */
+    height: 100vh;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+
+#section1-home{
+  /*background-color: #4F788D;*/
+  background-image: url('./landscape_placeholder.jpg');
+}
+
+#section2-home{
+  background-color: #A5BFC5;
+}
+
+#section3-home{
+  /*background-color: #7BA6B4;*/
+  background-image: url('./landscape_placeholder.jpg');
+}
+
+
 @-webkit-keyframes fade-in {
   from {
     opacity: 0;

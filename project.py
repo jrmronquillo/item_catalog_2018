@@ -441,9 +441,13 @@ def controllerDemoHelp():
 def shmesla():
     return render_template('shmesla-demo.html')
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/portfolio', methods=['GET', 'POST'])
 def portfolio():
     return render_template('portfolio.html')
+
+@app.route('/', methods=['GET', 'POST'])
+def home():
+    return render_template('home.html')
 
 
 @app.errorhandler(404)
