@@ -449,6 +449,10 @@ def portfolio():
 def home():
     return render_template('home.html')
 
+@app.route('/stand-out')
+def standOut():
+    return render_template('stand-out.html')
+
 
 @app.errorhandler(404)
 def page_not_found(e):
