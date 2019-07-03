@@ -25,6 +25,7 @@ module.exports = function(grunt){
 	        files: {
 	          // Dictionary of files
 	          'static/css/styles.css': 'static/css/source/source.scss', // 'destination': 'source'
+	          'static/css/stand-out.css': 'static/css/source/stand-out.scss',
 	        },
 	      },
 	    },
