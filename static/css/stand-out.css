@@ -53,6 +53,18 @@
   right: 5%;*/
 }
 
+.bouncer1 {
+  animation: bounce 0.8s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+.bouncer2 {
+  animation: bounce 1s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
 .leftside_image {
   max-width: 40%;
   height: auto;
@@ -63,10 +75,10 @@
 }
 
 .rightside_image {
-  max-width: 25%;
+  max-width: 50%;
   height: auto;
   position: absolute;
-  top: 15%;
+  top: 25%;
   right: 2%;
   z-index: -1;
 }
@@ -88,10 +100,10 @@
   }
 
   .rightside_image {
-    max-width: 25%;
+    max-width: 30%;
     height: auto;
     position: absolute;
-    top: 5%;
+    top: 25%;
     right: 2%;
     z-index: -1;
   }
@@ -119,6 +131,14 @@
     top: 25%;
     right: 2%;
     z-index: -1;
+  }
+}
+@keyframes bounce {
+  from {
+    tranform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 10px, 0);
   }
 }
 
