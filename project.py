@@ -453,6 +453,10 @@ def home():
 def standOut():
     return render_template('stand-out.html')
 
+@app.route('/sportsapp_mock')
+def sportsapp_mock():
+    return render_template('sportsapp_mock.html')
+
 
 @app.errorhandler(404)
 def page_not_found(e):

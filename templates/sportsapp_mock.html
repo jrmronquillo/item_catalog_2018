@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		console.log('check if this is chrome returns:'+(!!~navigator.userAgent.indexOf('Chrome')));
+		// Create new link Element 
+		var link = document.createElement('link');  
+
+		// set the attributes for link element 
+	   	link.rel = 'stylesheet';  
+
+		link.type = 'text/css'; 
+		if(!!~navigator.userAgent.indexOf('Chrome')){
+			console.log('load chrome styles triggered');
+			link.href = '/static/css/chrome-styles.css';
+		} else {
+			console.log('load stb styles triggered');
+			link.href = 'stb-styles.css';
+			//If we are a stb, set the resolution
+		
+		} 
+		
+
+		// Get HTML head element to append  
+		// link element to it  
+	   document.getElementsByTagName('HEAD')[0].appendChild(link);
+
+
+	   if (!!navigator.setResolution) {
+		  navigator.setResolution(1920, 1080);
+		} else {
+			console.log('not an STB!');
+		}
+
+	</script>
+	 
+	
+	<title>Sports App Mock</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript">
+		
+
+	</script>
+		
+</head>
+<body>
+	<div class="app-container">
+		<div id="view-test"></div>
+		<div id="left-menu">
+				<div class="header-wrapper">
+					<span>Lorem Ipsum</span>
+				</div>
+				<div class="pig-container">
+					<div class="pig-left-bar"></div>
+					<div class="pig-placeholder"></div>
+					<div class="pig-right-bar"></div>
+					<div class="pig-bottom-bar"></div>
+				</div>
+				<div class="left-menu-list-container">
+					<ul id="list-container-1" class="left-menu-list">
+						<li id='leaderboard' class="left-menu-items">Leaderboards</li>
+						<li id="scorecard"  class="left-menu-items">Scorecard</li>
+						<li class="left-menu-items" >Groups & Tee Times</li>
+						<li class="left-menu-items" >Menu Item 4</li>
+					</ul>
+
+				</div>
+		</div>
+
+		<div id="canvas1" class="canvas">
+			<div class="canvas-title">The Experience</div>
+			<div class="canvas-data-title">Leaderboard</div>
+			<div id='error-message'></div>
+			<div id='canvas-data'>
+			</div>
+
+			<div id='data2-container'>
+			</div>
+			
+
+		</div>
+
+		<!-- <div class="main-backdrop">
+			
+			
+			<div class="footer-color"></div>
+			
+			<h1 class="main-title"></h1>
+			<div id="test-div"></div>
+			<div id="key-down"></div>
+			<div id="react_main_container"></div>
+		</div> -->
+
+
+	</div>
+
+
+
+ 
+<script type="text/javascript" src="/static/sportsapp_mock.js"></script> 
+
+<!--<script src="https://jsonplaceholder.typicode.com/users?callback=testFunction"></script>-->
+<!--<script src="http://localhost:5001/rssTest?callback=testFunction"></script> -->
+
+<!--<script src="http://10.23.223.38/rssTest?callback=testFunction"></script>-->
+
+
+</body>
+</html>
