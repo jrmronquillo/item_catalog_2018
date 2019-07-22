@@ -27,13 +27,14 @@
 
         <div class="post">
             <!--<h2>{{category.id}}</h2> -->
-            <span class="primary-text-color">{{category.created}} </span>
+            
             <!--<a href="{{url_for('showItems', category_id=category.id)}}"> -->
             <h3><class="secondary-text-color">{{category.name}}</h3></a>
             <hr>
-            <h5 class="primary-text-color">Written by: {{category.author}}</h5>
+            <h5 class="primary-text-color secondary-text-weight">Written by: {{category.author}}</h5>
+            <span class="primary-text-color secondary-text-weight">{{category.created}} </span>
             <hr>
-            <p class="primary-text-color font-custom long-content">{{category.content}}</p>
+            <p class="primary-text-color font-custom long-content post-content">{{category.content}}</p>
             <hr>
         </div>
             {% endfor %}

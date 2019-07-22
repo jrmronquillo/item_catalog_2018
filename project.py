@@ -329,6 +329,20 @@ def deleteCategory(category_id):
         return render_template(
                 'deleteCategory.html', category=categoryToDelete)
 
+# show post page
+@app.route('/blog/<int:post_id>', methods=['GET', 'POST'])
+@app.route('/blog/<int:post_id>/', methods=['GET', 'POST'])
+def post(post_id):
+    post = session.query(
+        Categories).filter_by(id=post_id).first()
+    if post:
+        print 'fount post'
+        return render_template('post.html', post=post)
+    else:
+        return render_template('404.html');
+    # print post.content
+    
+
 # delete category - original
 #@app.route('/categories/<int:category_id>/delete/', methods=['GET', 'POST'])
 #@login_required

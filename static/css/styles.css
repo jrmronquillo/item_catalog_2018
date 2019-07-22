@@ -14,6 +14,8 @@ Secondary Background: #28343D;
 Highlights: ;
 Primary Text: #DE9391
 Secondary Text: ;
+
+test
 */
 .action-highlight {
   background-color: #007BFF !important;
@@ -118,12 +120,20 @@ Secondary Text: ;
   width: 100%;
 }
 
+#content_entry {
+  text-align: center;
+}
+
 .content-main {
   width: 100%;
 }
 
 .deviceSelect-mobile {
   display: none;
+}
+
+.error-text {
+  color: red;
 }
 
 .font-custom {
@@ -139,6 +149,15 @@ Secondary Text: ;
 .header-image {
   max-width: 100%;
   height: auto;
+}
+
+.input-style {
+  width: 90%;
+  margin: 0 5%;
+}
+
+.input-style-content {
+  height: 50vh;
 }
 
 .letter {
@@ -204,6 +223,10 @@ Secondary Text: ;
   height: 12%;
 }
 
+#name_input {
+  text-align: center;
+}
+
 .primary-bg-color {
   background-color: #3A5E48 !important;
 }
@@ -223,11 +246,28 @@ Secondary Text: ;
 }
 
 .post {
-  margin: 0em 14em;
+  margin-top: 5%;
+  padding: 0 15%;
+}
+
+.post-content, .post-author, .post-title {
+  /*padding: 0 15%;*/
+}
+
+.post-content {
+  font-size: 1.5em;
+}
+
+.post-title {
+  font-size: 3em;
 }
 
 .primary-text-color {
   color: #000;
+}
+
+.secondary-text-weight {
+  font-weight: 200;
 }
 
 .popover {
@@ -447,7 +487,7 @@ td {
 }
 @media (max-width: 760px) {
   .post {
-    margin: 1em;
+    padding: 0 5%;
   }
 
   #card-animation {
