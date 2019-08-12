@@ -17,10 +17,16 @@ import json
 from flask import make_response
 import requests
 
+import feedparser
+
 import datetime
 
 from handlers.decorators import (login_required, category_exists, item_exists,
-                                 user_created_category, user_created_item)
+                                 user_created_category, user_created_item, support_jsonp)
+
+# used for setting cors headers
+from flask_cors import CORS
+
 app = Flask(__name__)
 
 
@@ -341,7 +347,7 @@ def post(post_id):
     else:
         return render_template('404.html');
     # print post.content
-    
+
 
 # delete category - original
 #@app.route('/categories/<int:category_id>/delete/', methods=['GET', 'POST'])
@@ -470,6 +476,48 @@ def standOut():
 @app.route('/sportsapp_mock')
 def sportsapp_mock():
     return render_template('sportsapp_mock.html')
+
+@app.route('/rssTest')
+@support_jsonp
+def rssTest():
+    # print rssFeedConverter()
+    fullData= rssFeedConverter("https://news.google.com/news/rss")
+    testArr = []
+    for item in fullData:
+        print item.title
+        testArr.append(item.title)
+    # testArr = ['test', 'test2']
+
+    return jsonify(title=testArr)
+
+@app.route('/espnFeed')
+def espnFeed():
+    # print rssFeedConverter()
+    fullData= rssFeedConverter("https://www.espn.com/espn/rss/news")
+    testArr = []
+    for item in fullData:
+        print item.title
+        testArr.append(item.title)
+    # testArr = ['test', 'test2']
+
+    return jsonify(title=testArr)
+
+
+# server-side handling of rss feeds
+def rssFeedConverter(url):
+    test_url="https://news.google.com/news/rss"
+    data = feedparser.parse(url)
+    print data['feed']['title']
+    print len(data['entries'])
+    for article in data['entries']:
+        article.title + ":" + article.link
+
+    return data['entries']
+
+
+@app.route('/news_app')
+def news_app():
+    return render_template('news_app.html');
 
 
 @app.errorhandler(404)
