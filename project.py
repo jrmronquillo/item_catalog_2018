@@ -552,7 +552,12 @@ def newPortfolioItem():
         session.commit()
         return redirect(url_for('portfolio_redesign'))
     else:
-        return render_template('newPortfolioItem.html')
+        key = request.args.get('key')
+        if key == 'octane':
+            return render_template('newPortfolioItem.html')
+        else:
+            return redirect(url_for('portfolio_redesign'))
+
 
 @app.errorhandler(404)
 def page_not_found(e):
