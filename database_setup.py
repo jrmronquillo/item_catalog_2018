@@ -65,6 +65,24 @@ class CategoryItem(Base):
             'description': self.description,
         }
 
+class PortfolioItem(Base):
+    __tablename__ = 'portfolioitem'
+
+    title = Column(String(80), nullable=False)
+    id = Column(Integer, primary_key=True)
+    description = Column(String(2000))
+    url = Column(String(500))
+    hashtags = Column(String(500))
+
+    @property
+    def serialize(self):
+        return {
+            'title': self.title,
+            'description': self.description,
+            'url':self.url,
+            'hashtags': self.hashtags,
+        } 
+
 engine = create_engine('sqlite:///catalogwithusers.db', connect_args={'check_same_thread':False})
 # engine = create_engine(
 #   'postgresql+psycopg2://catalog:catalog@localhost/catalog')

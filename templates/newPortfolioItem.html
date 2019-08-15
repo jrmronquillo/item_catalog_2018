@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="row">
+        <h1>New Porfolio Item</h1>
+    </div>
+    <div class='row'>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+
+            <form action="#" method = 'post'>
+                    <div id='name_input'>
+                        <h4>Title:</h4>
+                        <input class="input-style" type ='text' size='20' name='title' maxlength="299" required>
+                        <h4>url:</h4>
+                        <input class="input-style" type ='text' size='20' name='url' maxlength="299" required>
+                    </div>
+                    <div id='content_entry'>
+                        <h4> Description: </h4>
+                        <textarea name='description' class="input-style input-style-content" placeholder="Start Typing..." required></textarea>
+                        <h4>hashtags:</h4>
+                        <input class="input-style" type ='text' size='20' name='hashtags' maxlength="299" required>
+                        <input type='submit' value='Create' class='create-button'>
+                        <a href = "{{url_for('portfolio_redesign')}}">Cancel</a>
+                    </div>
+                           
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class='col-sm-2'>
+
+    </div>
+{% endblock %}

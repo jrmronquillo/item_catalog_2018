@@ -2,7 +2,7 @@ from flask import (Flask, render_template, request, redirect, jsonify, url_for,
                    flash)
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from database_setup import Base, Categories, CategoryItem, User
+from database_setup import Base, Categories, CategoryItem, User, PortfolioItem
 
 from flask import session as login_session
 import random
@@ -519,6 +519,40 @@ def rssFeedConverter(url):
 def news_app():
     return render_template('news_app.html');
 
+@app.route('/portfolio_redesign')
+def portfolio_redesign():
+    test_data = [
+        {'title':'testTitle1',
+         'description': 'loireaad;fljkas ;alsdfjaf;dslkja sdfasdf',
+         'url': '/blog'},
+        {'title':'testTitle2',
+         'description': " jlsjlkserj",
+         'url': 'http://google.com'}
+    ]
+
+    prod_data = session.query(PortfolioItem).order_by(PortfolioItem.id.desc()).all()
+
+    return render_template('portfolio-redesign.html', test_data=test_data, prod_data=prod_data)
+
+@app.route('/portfolio_redesign/new/', methods=['GET', 'POST'])
+def newPortfolioItem():
+    if request.method == 'POST':
+        # logic to check number of characters in input data
+        title = request.form['title']
+        description = request.form['description']
+        if (len(description) > 3000) or (len(description) > 300):
+            print 'content input is over the character limit'
+            return render_template('portfolio_redesign.html')
+        # ---------------
+
+
+        newPortfolioItem = PortfolioItem(title=request.form['title'], description=request.form['description'], url=request.form['url'], hashtags=request.form['hashtags']
+                                  )
+        session.add(newPortfolioItem)
+        session.commit()
+        return redirect(url_for('portfolio_redesign'))
+    else:
+        return render_template('newPortfolioItem.html')
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -527,4 +561,4 @@ def page_not_found(e):
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key1'
     app.debug = True
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5001)

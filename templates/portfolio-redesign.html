@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class = 'pane'>
+    <h1>Portfolio Redesign</h1>
+    <div class="row">
+        {% if test_data != [] %}
+          {% for item in test_data%}
+          <div class="card" style="width: 18rem; margin: 10px;">
+            <img class="card-img-top" src="{{ url_for('static', filename='images/header.jpg') }}" alt="Card image cap">
+            <h5 class="card-title">{{item.title}}</h5>
+          
+            <div class="card-body">
+              <p class="card-text">{{item.description}}</p>
+              <a href="{{item.url}}" class="btn btn-primary">Learn More</a>
+          </div>
+      </div>
+        {% endfor %}
+      {% endif %}
+        
+          
+           
+           
+           
+    </div>
+
+    <div class = "row">
+      {% if prod_data != [] %}
+        {% for elem in prod_data %}
+          <div class="card" style="width: 18rem; margin: 10px;">
+            <img class="card-img-top" src="{{ url_for('static', filename='images/header.jpg') }}" alt="Card image cap">
+            <h5 class="card-title">{{elem.title}}</h5>
+          
+            <div class="card-body">
+              <p class="card-text">{{elem.description}}</p>
+              <a href="{{elem.url}}" class="btn btn-primary">Learn More</a>
+              <div class="card-footer text-muted">
+                <p>{{elem.hashtags}}</p>
+              </div>
+          </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    
+    
+
+</div>
+
+
+{% endblock %}
