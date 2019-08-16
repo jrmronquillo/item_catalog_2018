@@ -64,8 +64,11 @@ Vagrant.configure("2") do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   # config.vm.provision "shell", inline: <<-SHELL
-  #   apt-get update
-  #   apt-get install -y apache2
-  #   apt-get install python-pip
+  # apt-get update do
+  # apt-get install -y apache2
+  # apt-get -qqy install python python-pip
+  # pip2 install --upgrade pip
+  # pip2 install flask packaging oauth2client redis passlib flask-httpauth
+  # pip2 install sqlalchemy flask-sqlalchemy psycopg2 bleach requests
   # SHELL
 end

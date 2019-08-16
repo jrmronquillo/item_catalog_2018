@@ -534,25 +534,34 @@ def portfolio_redesign():
 
     return render_template('portfolio-redesign.html', test_data=test_data, prod_data=prod_data)
 
+
 @app.route('/portfolio_redesign/new/', methods=['GET', 'POST'])
 def newPortfolioItem():
     if request.method == 'POST':
         # logic to check number of characters in input data
         title = request.form['title']
         description = request.form['description']
-        if (len(description) > 3000) or (len(description) > 300):
-            print 'content input is over the character limit'
+        if (len(description) > 30000) or (len(description) > 300):
+            print 'content input is over the 300000 character limit'
             return render_template('portfolio_redesign.html')
         # ---------------
 
-
-        newPortfolioItem = PortfolioItem(title=request.form['title'], description=request.form['description'], url=request.form['url'], hashtags=request.form['hashtags']
-                                  )
+        newPortfolioItem = PortfolioItem(title=request.form['title'],
+                                         description=request.form['description'],
+                                         url=request.form['url'],
+                                         hashtags=request.form['hashtags']
+                                         )
         session.add(newPortfolioItem)
         session.commit()
         return redirect(url_for('portfolio_redesign'))
     else:
-        return render_template('newPortfolioItem.html')
+        # conditional to decide whether to show input page
+        key = request.args.get('key')
+        if key == 'octane':
+            return render_template('newPortfolioItem.html')
+        else:
+            return redirect(url_for('portfolio_redesign'))
+
 
 @app.errorhandler(404)
 def page_not_found(e):
