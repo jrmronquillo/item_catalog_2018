@@ -555,10 +555,8 @@ def newPortfolioItem():
         session.commit()
         return redirect(url_for('portfolio_redesign'))
     else:
-<<<<<<< HEAD
         # conditional to decide whether to show input page
-=======
->>>>>>> c265ee23bb95669b310d6cd9e0222fc5498828bd
+
         key = request.args.get('key')
         if key == 'octane':
             return render_template('newPortfolioItem.html')
