@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/jeromeronquillo/Desktop/Web Projects/item_catalog_2018","disabled":false,"__vagrantfile":true}}}
+=======
+{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/jr9099/Desktop/Develoment Project Files/item_catalog_2018","disabled":false,"__vagrantfile":true}}}
+>>>>>>> c265ee23bb95669b310d6cd9e0222fc5498828bd
