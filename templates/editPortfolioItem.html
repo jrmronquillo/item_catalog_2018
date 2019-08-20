@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row spacer-navbar">
+	<div class="col-centered">	
+
+		<h1> Edit PortFolio Item </h1>
+
+
+		<form action="{{ url_for('editPortfolioItem',item_id = item.id)}}" method = 'post'>
+
+
+		    <p>Title:</p>
+		        <input type ='text' size='30' name='title' placeholder = '{{item.title}}' required>
+
+		    <p> Description</p>
+		    	<textarea type='text' rows="10" cols="50" name='description' placeholder='{{item.description }}' required></textarea>
+
+		    <p>URL:</p>
+		        <input type ='text' size='30' name='url' placeholder = '{{item.url}}' required>
+		    
+		    <p>Hashtags:</p>
+		    	<input type ='text' size='30' name='hashtags' placeholder = '{{item.hashtags}}' required>
+		<input type='submit' value='Edit' class='edit-button'>
+
+
+		<a href = '{{url_for('portfolio_redesign')}}'> Cancel </a>
+
+		</form>
+	</div>
+</div>
+
+{% endblock %}

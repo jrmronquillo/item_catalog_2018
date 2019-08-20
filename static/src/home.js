@@ -130,6 +130,8 @@ class DownArrow extends React.Component {
 class NavBar extends React.Component {
   render() {
     // ...
+
+    // test comment1
     return (
       <div className={this.props.testEnv ? 'display-true' : 'display-false'}>
         <div
@@ -200,7 +202,7 @@ class NavBarBootStrap extends React.Component {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/portfolio">
+              <a className="nav-link" href="/portfolio_redesign">
                 Portfolio
               </a>
             </li>

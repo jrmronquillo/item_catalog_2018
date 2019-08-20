@@ -36,6 +36,14 @@ module.exports = function(grunt){
 		    	dest: 'css/output.css'
 		    },
 		},
+
+		uglify: {
+			my_target:{
+				files: {
+					'static/home.min.js' : ['static/src/home.js']
+				}
+			}
+		}
 	  	
 
 
@@ -45,5 +53,6 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-sass');
-	grunt.registerTask('default', ['sass','watch']);
+	grunt.loadNpmTasks('grunt-contrib-uglify-es');
+        grunt.registerTask('default', ['sass','watch']);
 };	

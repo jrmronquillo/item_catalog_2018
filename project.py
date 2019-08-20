@@ -561,7 +561,22 @@ def newPortfolioItem():
         if key == 'octane':
             return render_template('newPortfolioItem.html')
         else:
+
             return redirect(url_for('portfolio_redesign'))
+
+@app.route('/portfolio_redesign/<int:item_id>/edit', methods=['GET','POST'])
+def editPortfolioItem(item_id):
+    editedPortfolioItem = session.query(
+        PortfolioItem).filter_by(id=item_id).first()
+
+    if request.method == 'POST':
+        editedPortfolioItem.title = request.form['title']
+        editedPortfolioItem.description = request.form['description']
+        editedPortfolioItem.url = request.form['url']
+        editedPortfolioItem.hashtags = request.form['hashtags']
+        return redirect(url_for('portfolio_redesign'))
+    else:
+        return render_template('editPortfolioItem.html', item=editedPortfolioItem)
 
 
 @app.errorhandler(404)
