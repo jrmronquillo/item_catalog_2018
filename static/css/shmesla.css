@@ -67,13 +67,13 @@ html, body {
   pointer-events: none;
 }
 
-.App-header {
+.App-header-shmesla {
   /*scroll-snap-align: start;8/
   /*scroll-snap-stop: always;*/
   /*background-color: #282c34;*/
-  
+
   background-image: url("../images/Shmesla.JPG");
- 
+
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

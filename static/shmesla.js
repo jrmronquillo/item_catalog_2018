@@ -132,7 +132,7 @@ class Backdrop extends React.Component {
   render() {
     return (
       <div onClick={this.props.sideMenuToggle} className={this.props.sideMenuDisplay ? "container-backdrop" : "display-off"}>
-        
+
       </div>
     );
   }
@@ -197,7 +197,7 @@ class App extends React.Component {
     window.removeEventListener('wheel', this.handleWheel);
   }
 
- 
+
   handleWheel(e){
     //e.preventDefault();
     //e.stopPropagation();
@@ -205,7 +205,7 @@ class App extends React.Component {
     //console.log('handleWheel triggered!');
     //console.log('previousWheelDirection:'+this.state.previousWheelDirection)
     //console.log(e.wheelDelta);
-    
+
     // set wheelDirection according to wheelDelta
     if(e.wheelDelta>0){
       this.setState({
@@ -236,7 +236,7 @@ class App extends React.Component {
         window.scrollTo(0, document.getElementById('section1').offsetTop)
       }
     }
-    
+
     this.setState({
       previousWheelDirection: this.state.wheelDirection,
     })
@@ -303,7 +303,7 @@ class App extends React.Component {
     return (
 
       <div className="App">
-        <div className="App-header" id="appHeader" >
+        <div className="App-header-shmesla" id="appHeader" >
           <Navbar sideMenuToggle={this.sideMenuToggle} sideMenuDisplay={this.state.sideMenuDisplay} />
           <Sidemenu sideMenuDisplay={this.state.sideMenuDisplay} sideMenuClose={this.sideMenuClose}  />
           <Title />
