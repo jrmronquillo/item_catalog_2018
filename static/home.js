@@ -314,7 +314,7 @@ var NavBarBootStrap = function (_React$Component6) {
               { className: 'nav-item' },
               React.createElement(
                 'a',
-                { className: 'nav-link', href: '/portfolio' },
+                { className: 'nav-link', href: '/portfolio_redesign' },
                 'Portfolio'
               )
             )

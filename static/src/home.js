@@ -15,8 +15,7 @@ class Backdrop extends React.Component {
   render() {
     // ...
     return (
-      <div
-        className={
+      <div className={
           this.props.sideMenuOpen ? 'backDropVisible' : 'backDropInvisible'
         }
         onClick={this.props.backdropClickHandler}
@@ -408,8 +407,8 @@ class Main1 extends React.Component {
 
   // testing the jsx preprocessor
    render(){
-   	return(
-   		<div className="home_component_container">
+    return(
+      <div className="home_component_container">
         <Backdrop
           backdropClickHandler={this.backdropClickHandler}
           sideMenuOpen={this.state.sideMenuOpen}
@@ -505,7 +504,7 @@ class Main1 extends React.Component {
           <Cells testEnv={this.state.testEnv} />
         </div>
       </div>
-   	)
+    )
    }
 }
 

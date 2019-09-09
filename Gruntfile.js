@@ -40,10 +40,10 @@ module.exports = function(grunt){
 		uglify: {
 			my_target:{
 				files: {
-					'static/home.min.js' : ['static/src/home.js']
+					'static/homemin.js' : ['static/src/home.js']
 				}
 			}
-		}
+		},
 	  	
 
 
