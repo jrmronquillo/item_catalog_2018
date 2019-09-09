@@ -228,7 +228,8 @@ test
 }
 
 .primary-bg-color {
-  background-color: #3A5E48 !important;
+  /*background-color: #3A5E48 !important;*/
+  background-color: #212529 !important;
 }
 
 .nav-bar-text {
