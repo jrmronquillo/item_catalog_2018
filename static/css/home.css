@@ -147,6 +147,10 @@ Secondary Text: ;
   font-family: "Ubuntu", sans-serif;
 }
 
+.fsize1{
+  font-size: 1em !important;
+}
+
 .hamburger {
   width: 2%;
 }
