@@ -249,13 +249,14 @@ def newCategory():
         # logic to check number of characters in input data
         name = request.form['name']
         content = request.form['content']
+        demo_url = request.form['demo_url']
         if (len(content) > 3000) or (len(name) > 300):
             print 'content input is over the character limit'
             return render_template('newCategory.html')
         # ---------------
 
 
-        newCategory = Categories(name=request.form['name'], content=request.form['content'],
+        newCategory = Categories(demo_url=request.form['demo_url'], name=request.form['name'], content=request.form['content'],
                                   author='Jerome', user_id='1')
         session.add(newCategory)
         session.commit()
@@ -298,6 +299,7 @@ def editCategory(category_id):
         if request.form['name']:
             editedCategory.name = request.form['name']
             editedCategory.content = request.form['content']
+            editedCategory.demo_url = request.form['demo_url']
             return redirect(url_for('showCategories'))
     else:
         return render_template(

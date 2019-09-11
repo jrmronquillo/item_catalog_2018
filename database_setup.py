@@ -29,6 +29,7 @@ class Categories(Base):
     author = Column(String(250), nullable=False)
     name = Column(String(300), nullable=False)
     content = Column(String(3000), nullable=False)
+    demo_url = Column(String(250), nullable=False)
     categoryItems = relationship("CategoryItem",
                                  cascade='save-update, merge, delete')
     user_id = Column(Integer, ForeignKey('user.id'))
@@ -38,6 +39,7 @@ class Categories(Base):
     def serialize(self):
         """Return object in serializeable format"""
         return {
+            'demo_url': self.demo_url,
             'content': self.content,
             'name': self.name,
             'created': self.created,

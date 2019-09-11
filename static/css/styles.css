@@ -151,6 +151,10 @@ test
   height: auto;
 }
 
+.input-container{
+  text-align:center;
+}
+
 .input-style {
   width: 90%;
   margin: 0 5%;
