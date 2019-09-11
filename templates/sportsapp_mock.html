@@ -1,6 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
+
+{% extends 'base-demo.html' %}
+{% block content %}
+
+ 
+
+
+
 	<script>
 		console.log('check if this is chrome returns:'+(!!~navigator.userAgent.indexOf('Chrome')));
 		// Create new link Element 
@@ -103,7 +108,6 @@
 <!--<script src="http://localhost:5001/rssTest?callback=testFunction"></script> -->
 
 <!--<script src="http://10.23.223.38/rssTest?callback=testFunction"></script>-->
+{% endblock %}
 
 
-</body>
-</html>

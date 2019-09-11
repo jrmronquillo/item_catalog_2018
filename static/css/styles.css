@@ -29,6 +29,10 @@ test
   background-image: url("../images/header.png");
 }
 
+.auto-marg{
+  margin:auto;
+}
+
 .tooltip-1 {
   border-radius: 25px;
 }
@@ -130,6 +134,16 @@ test
 
 .deviceSelect-mobile {
   display: none;
+}
+
+.demo-bar{
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100vw;
+  height: 10vh;
+  opacity: .7;
+  z-index: 9999;
 }
 
 .error-text {
@@ -414,6 +428,10 @@ test
 
 .visual-container {
   width: 100%;
+}
+
+.white-text{
+  color: white;
 }
 
 a {
