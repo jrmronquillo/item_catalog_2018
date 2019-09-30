@@ -298,7 +298,7 @@ Secondary Text: ;
 }
 
 .section3 {
-  /*background-color: #7BA6B4;*/
+  background-color: #282c39;
   background-image: url("../images/header.jpg");
 }
 
@@ -452,6 +452,7 @@ Secondary Text: ;
   }
 
   .section3 {
+    background-color: #282c39;
     background-image: url("../images/portfolio-bg-mobile-2.jpg");
   }
 }
