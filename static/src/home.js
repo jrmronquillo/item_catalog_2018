@@ -52,11 +52,11 @@ class SideMenu extends React.Component {
             <div className="xbar2" />
           </div>
           <h1>Menu</h1>
-          <input
-            onChange={this.props.filterFunction}
-            value={this.props.value}
-            placeholder="Search..."
-          />
+          //<input
+          //  onChange={this.props.filterFunction}
+          //  value={this.props.value}
+          //  placeholder="Search..."
+          ///>
 
           <ul className="listStyle">
             {this.props.updatedList.map((item, i) => {
