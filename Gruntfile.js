@@ -1,58 +1,23 @@
-module.exports = function(grunt){
+module.exports = function(grunt) {
 
-	grunt.initConfig({
-		watch: {
-	  		  sass: {
-	  		  	files: ['static/css/source/*.scss'],
-	  		  	tasks: ['sass'],
-	  		  },
+  // Project configuration.
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+    uglify: {
+      options: {
+        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+      },
+      build: {
+        src: 'src/<%= pkg.name %>.js',
+        dest: 'build/<%= pkg.name %>.min.js'
+      }
+    }
+  });
 
-			  js: {
-			    files: ['js/**/*.js'],
-			    tasks: ['concat'],
-			  },
-			  css: {
-			    files: ['css/**/*.css'],
-			    tasks: ['concat'],
-			  },
-		},
+  // Load the plugin that provides the "uglify" task.
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
+  // Default task(s).
+  grunt.registerTask('default', ['uglify']);
 
-    	sass: {
-	      // Task
-	      dist: {
-	        // Target
-	        files: {
-	          // Dictionary of files
-	          'static/css/styles.css': 'static/css/source/source.scss', // 'destination': 'source'
-	          'static/css/stand-out.css': 'static/css/source/stand-out.scss',
-	        },
-	      },
-	    },
-
-	  	concat: {
-		    css: {
-		    	src: ['css/main.css', 'css/theme.css'],
-		    	dest: 'css/output.css'
-		    },
-		},
-
-		uglify: {
-			my_target:{
-				files: {
-					'static/homemin.js' : ['static/src/home.js']
-				}
-			}
-		},
-	  	
-
-
-	});
-
-
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-sass');
-	grunt.loadNpmTasks('grunt-contrib-uglify-es');
-        grunt.registerTask('default', ['sass','watch']);
-};	
+};
