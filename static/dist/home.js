@@ -1,5 +1,5 @@
 // home.js
-'use strict';
+'use strict'; //import DownArrow;
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -21,9 +21,9 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 var e = React.createElement;
 var menuItems = [{
-  testKey: 'http://testUrl'
+  testKey: 'http://testUrl1'
 }, {
-  'remote control app': 'http://localhost:5000'
+  'remote control app': 'http://localhost:5001'
 }, {
   'multi-user app': 'http://hello-udacity2323232323.appspot.com/blog'
 }];
@@ -155,34 +155,25 @@ function (_React$Component3) {
 
   return SideMenu;
 }(React.Component);
-
-var DownArrow =
-/*#__PURE__*/
-function (_React$Component4) {
-  _inherits(DownArrow, _React$Component4);
-
-  function DownArrow() {
-    _classCallCheck(this, DownArrow);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(DownArrow).apply(this, arguments));
+/*class DownArrow extends React.Component {
+  render() {
+    return (
+      <div
+        className={
+          this.props.downArrowShow ? 'downArrowVisible' : 'downArrowInvisible'
+        }
+      >
+        <span>&darr;</span>
+      </div>
+    );
   }
+}*/
 
-  _createClass(DownArrow, [{
-    key: "render",
-    value: function render() {
-      return React.createElement("div", {
-        className: this.props.downArrowShow ? 'downArrowVisible' : 'downArrowInvisible'
-      }, React.createElement("span", null, "\u2193"));
-    }
-  }]);
-
-  return DownArrow;
-}(React.Component);
 
 var NavBar =
 /*#__PURE__*/
-function (_React$Component5) {
-  _inherits(NavBar, _React$Component5);
+function (_React$Component4) {
+  _inherits(NavBar, _React$Component4);
 
   function NavBar() {
     _classCallCheck(this, NavBar);
@@ -231,8 +222,8 @@ function (_React$Component5) {
 
 var NavBarBootStrap =
 /*#__PURE__*/
-function (_React$Component6) {
-  _inherits(NavBarBootStrap, _React$Component6);
+function (_React$Component5) {
+  _inherits(NavBarBootStrap, _React$Component5);
 
   function NavBarBootStrap() {
     _classCallCheck(this, NavBarBootStrap);
@@ -245,7 +236,7 @@ function (_React$Component6) {
     value: function render() {
       // ...
       return React.createElement("nav", {
-        className: this.props.stickyNavBarShow ? 'fixed-top navbar-expand-lg navbar-dark bg-dark' : 'navbar-expand-lg navbar-dark bg-dark'
+        className: this.props.stickyNavBarShow ? 'fixed-top navbar-expand-lg navbar-dark bg-dark align-center' : 'navbar-expand-lg navbar-dark bg-dark align-center'
       }, React.createElement("button", {
         className: "navbar-toggler",
         type: "button",
@@ -292,8 +283,8 @@ function (_React$Component6) {
 
 var Cells =
 /*#__PURE__*/
-function (_React$Component7) {
-  _inherits(Cells, _React$Component7);
+function (_React$Component6) {
+  _inherits(Cells, _React$Component6);
 
   function Cells() {
     _classCallCheck(this, Cells);
@@ -318,8 +309,8 @@ function (_React$Component7) {
 
 var Main1 =
 /*#__PURE__*/
-function (_React$Component8) {
-  _inherits(Main1, _React$Component8);
+function (_React$Component7) {
+  _inherits(Main1, _React$Component7);
 
   function Main1(props) {
     var _this3;
