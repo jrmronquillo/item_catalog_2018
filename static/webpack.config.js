@@ -2,7 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
-	entry: './quoteMachine/js/index.js',
+	entry: './homePage/js/index.js',
 	mode: 'production',
   module: {
     rules: [
@@ -19,7 +19,7 @@ module.exports = {
   output: {
     path: __dirname + '/dist',
     publicPath: '/',
-    filename: 'quoteMachine_bund.js'
+    filename: 'home_bund.js'
   },
   devServer: {
     contentBase: './dist'
