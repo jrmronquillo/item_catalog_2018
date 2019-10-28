@@ -249,14 +249,13 @@ def newCategory():
         # logic to check number of characters in input data
         name = request.form['name']
         content = request.form['content']
-        demo_url = request.form['demo_url']
         if (len(content) > 3000) or (len(name) > 300):
             print 'content input is over the character limit'
             return render_template('newCategory.html')
         # ---------------
 
 
-        newCategory = Categories(demo_url=request.form['demo_url'], name=request.form['name'], content=request.form['content'],
+        newCategory = Categories(name=request.form['name'], content=request.form['content'],
                                   author='Jerome', user_id='1')
         session.add(newCategory)
         session.commit()
@@ -290,8 +289,8 @@ def newCategory():
 # edit category
 @app.route('/blog/<int:category_id>/edit/', methods=['GET', 'POST'])
 # @login_required
-@category_exists
-@user_created_category
+# @category_exists
+# @user_created_category
 def editCategory(category_id):
     editedCategory = session.query(
         Categories).filter_by(id=category_id).first()
@@ -299,7 +298,6 @@ def editCategory(category_id):
         if request.form['name']:
             editedCategory.name = request.form['name']
             editedCategory.content = request.form['content']
-            editedCategory.demo_url = request.form['demo_url']
             return redirect(url_for('showCategories'))
     else:
         return render_template(
@@ -536,50 +534,25 @@ def portfolio_redesign():
 
     return render_template('portfolio-redesign.html', test_data=test_data, prod_data=prod_data)
 
-
 @app.route('/portfolio_redesign/new/', methods=['GET', 'POST'])
 def newPortfolioItem():
     if request.method == 'POST':
         # logic to check number of characters in input data
         title = request.form['title']
         description = request.form['description']
-        if (len(description) > 30000) or (len(description) > 300):
-            print 'content input is over the 300000 character limit'
-            return render_template('portfolio_redesign.html')
+        if (len(description) > 3000) or (len(description) > 300):
+            print 'content input is over the character limit'
+            return render_template('portfolio-redesign.html')
         # ---------------
 
-        newPortfolioItem = PortfolioItem(title=request.form['title'],
-                                         description=request.form['description'],
-                                         url=request.form['url'],
-                                         hashtags=request.form['hashtags']
-                                         )
+
+        newPortfolioItem = PortfolioItem(title=request.form['title'], description=request.form['description'], url=request.form['url'], hashtags=request.form['hashtags']
+                                  )
         session.add(newPortfolioItem)
         session.commit()
         return redirect(url_for('portfolio_redesign'))
     else:
-        # conditional to decide whether to show input page
-
-        key = request.args.get('key')
-        if key == 'octane':
-            return render_template('newPortfolioItem.html')
-        else:
-
-            return redirect(url_for('portfolio_redesign'))
-
-@app.route('/portfolio_redesign/<int:item_id>/edit', methods=['GET','POST'])
-def editPortfolioItem(item_id):
-    editedPortfolioItem = session.query(
-        PortfolioItem).filter_by(id=item_id).first()
-
-    if request.method == 'POST':
-        editedPortfolioItem.title = request.form['title']
-        editedPortfolioItem.description = request.form['description']
-        editedPortfolioItem.url = request.form['url']
-        editedPortfolioItem.hashtags = request.form['hashtags']
-        return redirect(url_for('portfolio_redesign'))
-    else:
-        return render_template('editPortfolioItem.html', item=editedPortfolioItem)
-
+        return render_template('newPortfolioItem.html')
 
 @app.errorhandler(404)
 def page_not_found(e):
